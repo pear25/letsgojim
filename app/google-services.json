@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "114891029096",
+    "project_id": "letsgojim-a359e",
+    "storage_bucket": "letsgojim-a359e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:114891029096:android:a006cb7a8f3ab17b6a99dd",
+        "android_client_info": {
+          "package_name": "edu.cuhk.csci3310.a3310_proj_final"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "114891029096-0lqgrvkhicnd14ccgg172rcc3r6gab8i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2m0ocAAWKyHrBs5Rpnw8SIJWmabu1rXo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "114891029096-0lqgrvkhicnd14ccgg172rcc3r6gab8i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
