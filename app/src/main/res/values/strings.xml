@@ -9,4 +9,46 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    
+    <string-array name="gym_movement_list">
+        <item>Flat Chest Press</item>
+        <item>Incline Chest Press</item>
+        <item>Chest Flies</item>
+        <item>Seated Shoulder Press</item>
+        <item>Lateral Raises</item>
+        <item>Bent Over Rows</item>
+        <item>Lat Pulldowns</item>
+        <item>Deadlifts</item>
+        <item>Back Squats</item>
+        <item>Leg Extension</item>
+        <item>Dummy</item>
+    </string-array>
+
+    <string-array name="muscles_targeted">
+        <item>Chest</item>
+        <item>Chest</item>
+        <item>Chest</item>
+        <item>Shoulder</item>
+        <item>Shoulder</item>
+        <item>Back</item>
+        <item>Back</item>
+        <item>Back</item>
+        <item>Leg</item>
+        <item>Leg</item>
+        <item>Dummy</item>
+    </string-array>
+
+    <string-array name="exercise_type">
+        <item>C</item>
+        <item>C</item>
+        <item>I</item>
+        <item>I</item>
+        <item>I</item>
+        <item>C</item>
+        <item>I</item>
+        <item>C</item>
+        <item>C</item>
+        <item>I</item>
+        <item>D</item>
+    </string-array>
 </resources>
