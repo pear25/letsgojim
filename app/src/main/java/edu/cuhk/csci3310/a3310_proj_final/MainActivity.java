@@ -17,27 +17,51 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import edu.cuhk.csci3310.a3310_proj_final.databinding.ActivityMainBinding;
+//import edu.cuhk.csci3310.a3310_proj_final.databinding.ActivityMainBinding;
 
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
     FirebaseFirestore firestore;
-    private AppBarConfiguration appBarConfiguration;
-    private ActivityMainBinding binding;
+    ArrayList<ExerciseModel> exerciseModels = new ArrayList<>();
+
+    int[] image = {
+            R.drawable.flat_bench,
+            R.drawable.incline_bench,
+            R.drawable.bench_press_svgrepo_com,
+            R.drawable.shoulder_press_svgrepo_com,
+            R.drawable.exercise,
+            R.drawable.bo_rows,
+            R.drawable.lat_pulldown,
+            R.drawable.deadlift,
+            R.drawable.squat_svgrepo_com,
+            R.drawable.leg_extension,
+            R.drawable.ic_android_black_24dp,
+            };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+//        testFirestore();
+        setContentView(R.layout.activity_main);
+        RecyclerView recyclerView = findViewById(R.id.mRecyclerView);
+        setExerciseModels();
+        Exercise_RecycleViewAdapter mAdapter = new Exercise_RecycleViewAdapter(this, exerciseModels);
+        recyclerView.setAdapter(mAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+    }
+
+    public void testFirestore() {
         firestore = FirebaseFirestore.getInstance();
         Map<String, Object> users = new HashMap<>();
         users.put("Test", "Firebase");
@@ -53,48 +77,49 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Failure", Toast.LENGTH_LONG).show();
             }
         });
-
-        setSupportActionBar(binding.toolbar);
-
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-        appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-
-        binding.fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
+    private void setExerciseModels() {
+        String[] exerciseNames = getResources().getStringArray(R.array.gym_movement_list);
+        String[] muscleTargeted = getResources().getStringArray(R.array.muscles_targeted);
+        String[] exerciseTypes = getResources().getStringArray(R.array.exercise_type);
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        for(int i = 0; i < exerciseNames.length; i++) {
+            exerciseModels.add(new ExerciseModel(
+                    exerciseNames[i],
+                    muscleTargeted[i],
+                    exerciseTypes[i],
+                    image[i]
+            ));
         }
-
-        return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-        return NavigationUI.navigateUp(navController, appBarConfiguration)
-                || super.onSupportNavigateUp();
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.menu_main, menu);
+//        return true;
+//    }
+
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        // Handle action bar item clicks here. The action bar will
+//        // automatically handle clicks on the Home/Up button, so long
+//        // as you specify a parent activity in AndroidManifest.xml.
+//        int id = item.getItemId();
+//
+//        //noinspection SimplifiableIfStatement
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
+//
+//        return super.onOptionsItemSelected(item);
+//    }
+
+//    @Override
+//    public boolean onSupportNavigateUp() {
+//        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
+//        return NavigationUI.navigateUp(navController, appBarConfiguration)
+//                || super.onSupportNavigateUp();
+//    }
 }
