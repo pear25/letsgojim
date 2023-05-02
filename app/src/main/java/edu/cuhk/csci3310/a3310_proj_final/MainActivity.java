@@ -42,13 +42,13 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
     int[] image = {
             R.drawable.flat_bench,
             R.drawable.incline_bench,
-            R.drawable.bench_press_svgrepo_com,
-            R.drawable.shoulder_press_svgrepo_com,
+            R.drawable.chest_fly,
+            R.drawable.dips,
             R.drawable.exercise,
             R.drawable.bo_rows,
             R.drawable.lat_pulldown,
             R.drawable.deadlift,
-            R.drawable.squat_svgrepo_com,
+            R.drawable.squats,
             R.drawable.leg_extension,
             R.drawable.ic_android_black_24dp,
             };
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
 
         mAuth = FirebaseAuth.getInstance();
 
-        textView = findViewById(R.id.user_details);
+//        textView = findViewById(R.id.user_details);
         floatingActionButton = findViewById(R.id.logout_btn);
         user = mAuth.getCurrentUser();
 

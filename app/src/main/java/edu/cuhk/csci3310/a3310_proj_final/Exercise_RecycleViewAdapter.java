@@ -38,8 +38,6 @@ public class Exercise_RecycleViewAdapter extends RecyclerView.Adapter<Exercise_R
     @Override
     public void onBindViewHolder(@NonNull Exercise_RecycleViewAdapter.MyViewHolder holder, int position) {
         holder.tvName.setText(exerciseModels.get(position).getExerciseName());
-        holder.tvTarget.setText(exerciseModels.get(position).getMuscleTargeted());
-        holder.tvType.setText(exerciseModels.get(position).getMovementType());
         holder.imageView.setImageResource(exerciseModels.get(position).getImage());
     }
 
@@ -51,15 +49,13 @@ public class Exercise_RecycleViewAdapter extends RecyclerView.Adapter<Exercise_R
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
         ImageView imageView;
-        TextView tvName, tvTarget, tvType;
+        TextView tvName;
 
         public MyViewHolder(@NonNull View itemView, RecyclerViewInterface recyclerViewInterface) {
             super(itemView);
 
             imageView = itemView.findViewById(R.id.imageView);
             tvName = itemView.findViewById(R.id.textView);
-            tvTarget = itemView.findViewById(R.id.textView2);
-            tvType = itemView.findViewById(R.id.textView3);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
