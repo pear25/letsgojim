@@ -14,13 +14,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class Exercise_RecycleViewAdapter extends RecyclerView.Adapter<Exercise_RecycleViewAdapter.MyViewHolder> {
-
+    private final RecyclerViewInterface recyclerViewInterface;
     Context context;
     ArrayList<ExerciseModel> exerciseModels;
 
-    public Exercise_RecycleViewAdapter(Context context, ArrayList<ExerciseModel> exerciseModels) {
+    public Exercise_RecycleViewAdapter(Context context,
+                                       ArrayList<ExerciseModel> exerciseModels,
+                                       RecyclerViewInterface recyclerViewInterface) {
         this.context = context;
         this.exerciseModels = exerciseModels;
+        this.recyclerViewInterface = recyclerViewInterface;
     }
 
     @NonNull
@@ -29,7 +32,7 @@ public class Exercise_RecycleViewAdapter extends RecyclerView.Adapter<Exercise_R
         // Inflate layout
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.recycler_view_row, parent, false);
-        return new Exercise_RecycleViewAdapter.MyViewHolder(view);
+        return new Exercise_RecycleViewAdapter.MyViewHolder(view, recyclerViewInterface);
     }
 
     @Override
@@ -50,13 +53,26 @@ public class Exercise_RecycleViewAdapter extends RecyclerView.Adapter<Exercise_R
         ImageView imageView;
         TextView tvName, tvTarget, tvType;
 
-        public MyViewHolder(@NonNull View itemView) {
+        public MyViewHolder(@NonNull View itemView, RecyclerViewInterface recyclerViewInterface) {
             super(itemView);
 
             imageView = itemView.findViewById(R.id.imageView);
             tvName = itemView.findViewById(R.id.textView);
             tvTarget = itemView.findViewById(R.id.textView2);
             tvType = itemView.findViewById(R.id.textView3);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(recyclerViewInterface != null) {
+                        int pos = getAdapterPosition();
+
+                        if(pos != RecyclerView.NO_POSITION) {
+                            recyclerViewInterface.onExerciseClick(pos);
+                        }
+                    }
+                }
+            });
         }
     }
 }
