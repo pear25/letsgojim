@@ -17,12 +17,14 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="main_activity">Exercise List</string>
+    <string name="floating_button_description">Logout</string>
     
     <string-array name="gym_movement_list">
         <item>Flat Chest Press</item>
         <item>Incline Chest Press</item>
         <item>Chest Flies</item>
-        <item>Seated Shoulder Press</item>
+        <item>Dips</item>
         <item>Lateral Raises</item>
         <item>Bent Over Rows</item>
         <item>Lat Pulldowns</item>
@@ -36,7 +38,7 @@
         <item>Chest</item>
         <item>Chest</item>
         <item>Chest</item>
-        <item>Shoulder</item>
+        <item>Triceps / Chest</item>
         <item>Shoulder</item>
         <item>Back</item>
         <item>Back</item>
@@ -64,7 +66,7 @@
         <item>Lie on your back on a flat bench. Grip a barbell with hands slightly wider than shoulder width. The bar should be directly over the shoulders. Press your feet firmly into the ground and keep your hips on the bench throughout the entire movement.</item>
         <item>When the bench is set at an incline (15 to 30 degrees), you activate your shoulders more since it\'s comparable to a shoulder press. Also, because of the angle of the bench, this exercise puts less stress on your rotator cuff, which is a common area for injury when using the flat bench.</item>
         <item>A chest fly is a weightlifting exercise that primarily targets the pectoral muscles. It is a variation of the standard bench press and is performed by lying on a flat bench with a weight in each hand. You can do this exercise with dumbbells, barbells, or cables.</item>
-        <item>Sit on the bench holding two dumbbells at shoulder height with an overhand grip. Press the weights up above your head until your arms are fully extended. Return slowly to the start position.</item>
+        <item>Dips are a bodyweight exercise that develops the triceps and other upper-body muscles. The exercise begins when you hold on to parallel bars with your arms straight. You then bend your elbows until your upper arms are parallel to the ground before driving up to the starting position.</item>
         <item>Raising your arms to the side in a plane-like position is also called a shoulder abduction. Lateral raises muscles worked primarily include the lateral deltoid muscles. Because of the rotating movement, you\'ll use your front deltoids and upper traps a little bit, too.</item>
         <item>Lift the bar from the rack, bend forward at the hips, and keep the back straight with a slight bend in the knees. Lower the bar towards the floor until the elbows are completely straight, and keep the back flat as the bar is pulled towards the belly button. Then slowly lower the bar to the starting position and repeat.</item>
         <item>The pulldown exercise works the back muscles and is performed at a workstation with adjustable resistance, usually plates. While seated, you pull a hanging bar toward you to reach chin level, then release it back up with control for one repetition. This exercise can be done as part of an upper-body strength workout.</item>

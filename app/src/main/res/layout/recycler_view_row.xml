@@ -12,8 +12,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        app:cardCornerRadius="20dp"
-
+        app:cardCornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,7 +20,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:padding="4dp">
 
             <ImageView
                 android:id="@+id/imageView"
@@ -39,37 +39,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="TextView"
-                android:layout_marginLeft="8dp"
+                android:layout_marginLeft="16dp"
                 app:layout_constraintStart_toEndOf="@+id/imageView"
                 app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
                 tools:layout_editor_absoluteX="337dp"
                 tools:layout_editor_absoluteY="16dp"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                android:textColor="@color/teal_200"
+                android:theme="@style/ExerciseListHeader"
                 />
 
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TextView"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView"
-                app:layout_constraintStart_toStartOf="@+id/textView"
-                tools:layout_editor_absoluteX="119dp"
-                tools:layout_editor_absoluteY="73dp" />
 
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TextView"
-                app:layout_constraintTop_toTopOf="@+id/textView2"
-                app:layout_constraintStart_toEndOf="@+id/textView2"
-                android:layout_marginLeft="8dp"
-                tools:layout_editor_absoluteX="119dp"
-                tools:layout_editor_absoluteY="16dp" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

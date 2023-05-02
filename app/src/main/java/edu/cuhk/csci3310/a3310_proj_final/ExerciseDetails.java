@@ -19,10 +19,12 @@ public class ExerciseDetails extends AppCompatActivity {
 
         TextView exerciseNameView = findViewById(R.id.textView4);
         TextView exerciseDetailView = findViewById(R.id.textView5);
+        TextView muscleTargetedView = findViewById(R.id.textView2);
         ImageView exerciseImage = findViewById(R.id.imageView2);
 
         exerciseNameView.setText(name);
         exerciseDetailView.setText(movementDescription);
+        muscleTargetedView.append(muscleTargeted);
         exerciseImage.setImageResource(image);
     }
 }
