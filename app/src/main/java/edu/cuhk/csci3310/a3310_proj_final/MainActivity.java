@@ -1,5 +1,6 @@
 package edu.cuhk.csci3310.a3310_proj_final;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -30,7 +31,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements RecyclerViewInterface {
     FirebaseFirestore firestore;
     ArrayList<ExerciseModel> exerciseModels = new ArrayList<>();
 
@@ -55,7 +56,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         RecyclerView recyclerView = findViewById(R.id.mRecyclerView);
         setExerciseModels();
-        Exercise_RecycleViewAdapter mAdapter = new Exercise_RecycleViewAdapter(this, exerciseModels);
+        Exercise_RecycleViewAdapter mAdapter = new Exercise_RecycleViewAdapter
+                (this,
+                exerciseModels,
+                this);
         recyclerView.setAdapter(mAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -83,15 +87,29 @@ public class MainActivity extends AppCompatActivity {
         String[] exerciseNames = getResources().getStringArray(R.array.gym_movement_list);
         String[] muscleTargeted = getResources().getStringArray(R.array.muscles_targeted);
         String[] exerciseTypes = getResources().getStringArray(R.array.exercise_type);
+        String[] exerciseDescription = getResources().getStringArray(R.array.movement_description);
 
         for(int i = 0; i < exerciseNames.length; i++) {
             exerciseModels.add(new ExerciseModel(
                     exerciseNames[i],
                     muscleTargeted[i],
                     exerciseTypes[i],
-                    image[i]
+                    image[i],
+                    exerciseDescription[i]
             ));
         }
+    }
+
+    @Override
+    public void onExerciseClick(int position) {
+        Intent intent = new Intent(MainActivity.this, ExerciseDetails.class);
+
+        intent.putExtra("NAME", exerciseModels.get(position).getExerciseName());
+        intent.putExtra("TARGET", exerciseModels.get(position).getMuscleTargeted());
+        intent.putExtra("IMAGE", exerciseModels.get(position).getImage());
+        intent.putExtra("DESCRIPTION", exerciseModels.get(position).getMovementDescription());
+
+        startActivity(intent);
     }
 
 //    @Override
