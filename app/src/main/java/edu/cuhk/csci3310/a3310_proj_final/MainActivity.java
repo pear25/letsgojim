@@ -1,10 +1,14 @@
 package edu.cuhk.csci3310.a3310_proj_final;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -24,6 +28,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -48,11 +53,41 @@ public class MainActivity extends AppCompatActivity {
             R.drawable.ic_android_black_24dp,
             };
 
+    FloatingActionButton floatingActionButton;
+    TextView textView;
+    FirebaseAuth mAuth;
+    FirebaseUser user;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 //        testFirestore();
         setContentView(R.layout.activity_main);
+
+        mAuth = FirebaseAuth.getInstance();
+
+        textView = findViewById(R.id.user_details);
+        floatingActionButton = findViewById(R.id.logout_btn);
+        user = mAuth.getCurrentUser();
+
+        if (user == null){
+            Intent intent = new Intent(getApplicationContext(), Login.class);
+            startActivity(intent);
+            finish();
+        } else{
+            textView.setText(user.getEmail());
+        }
+
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(getApplicationContext(), Login.class);
+                startActivity(intent);
+                finish();
+            }
+        });
         RecyclerView recyclerView = findViewById(R.id.mRecyclerView);
         setExerciseModels();
         Exercise_RecycleViewAdapter mAdapter = new Exercise_RecycleViewAdapter(this, exerciseModels);
