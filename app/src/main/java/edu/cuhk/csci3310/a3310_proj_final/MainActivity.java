@@ -67,14 +67,14 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
 
         mAuth = FirebaseAuth.getInstance();
 
-//        textView = findViewById(R.id.user_details);
+        textView = findViewById(R.id.user_details);
         floatingActionButton = findViewById(R.id.logout_btn);
         user = mAuth.getCurrentUser();
 
         if (user == null){
-            Intent intent = new Intent(getApplicationContext(), Login.class);
-            startActivity(intent);
-            finish();
+//            Intent intent = new Intent(getApplicationContext(), Login.class);
+//            startActivity(intent);
+//            finish();
         } else{
             textView.setText(user.getEmail());
         }
