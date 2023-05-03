@@ -19,7 +19,9 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="main_activity">Exercise List</string>
     <string name="floating_button_description">Logout</string>
-    
+    <string name="start_workout">Start a Workout</string>
+    <string name="workout_option">Choose a workout type</string>
+
     <string-array name="gym_movement_list">
         <item>Flat Chest Press</item>
         <item>Incline Chest Press</item>

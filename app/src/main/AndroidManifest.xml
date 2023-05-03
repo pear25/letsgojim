@@ -42,5 +42,10 @@
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.3310_proj_final.NoActionBar" />
+
+        <activity
+            android:name=".StartWorkout"
+            android:exported="true"
+            android:theme="@style/Theme.3310_proj_final.NoActionBar" />
     </application>
 </manifest>

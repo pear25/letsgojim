@@ -1,0 +1,40 @@
+{
+  "workout": [
+    {
+      "type": "cardio",
+      "filename": "cardio.png",
+      "text": "Cardio",
+      "description": "Increases your heart rate and improves the health of the cardiovascular system."
+    },
+    {
+      "type": "powerlifting",
+      "filename": "powerlifting.png",
+      "text": "Powerlifting",
+      "description": "Combination of strength, technique, and mental focus, and is popular among fitness enthusiasts and competitive athletes alike."
+    },
+    {
+      "type": "strength",
+      "filename": "strength.png",
+      "text": "Strength",
+      "description": "Physical exercise that uses resistance to build and strengthen muscles, improve bone density, and prevent chronic diseases."
+    },
+    {
+      "type": "plyometrics",
+      "filename": "plyometrics.png",
+      "text": "Plyometrics",
+      "description": "High-intensity exercise that involves explosive jumping movements to improve power, speed, and agility."
+    },
+    {
+      "type": "stretching",
+      "filename": "stretching.png",
+      "text": "Stretching",
+      "description": "Increase flexibility, range of motion, and muscle control, and can help improve athletic performance, prevent injuries, and reduce muscle soreness."
+    },
+    {
+      "type": "strongman",
+      "filename": "strongman.png",
+      "text": "Strongman",
+      "description": "Competitive strength sport that tests athletes' abilities to lift, carry, and move heavy objects."
+    }
+  ]
+}

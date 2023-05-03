@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
             R.drawable.ic_android_black_24dp,
             };
 
-    FloatingActionButton floatingActionButton;
+    FloatingActionButton logoutBtn, startWorkoutBtn;
     TextView textView;
     FirebaseAuth mAuth;
     FirebaseUser user;
@@ -68,7 +68,8 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
         mAuth = FirebaseAuth.getInstance();
 
         textView = findViewById(R.id.user_details);
-        floatingActionButton = findViewById(R.id.logout_btn);
+//        textView = findViewById(R.id.user_details);
+        logoutBtn = findViewById(R.id.logout_btn);
         user = mAuth.getCurrentUser();
 
         if (user == null){
@@ -76,10 +77,11 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
 //            startActivity(intent);
 //            finish();
         } else{
-            textView.setText(user.getEmail());
+//            textView.setText(user.getEmail());
+            System.out.println(user);
         }
 
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+        logoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 FirebaseAuth.getInstance().signOut();
@@ -96,6 +98,17 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
                 this);
         recyclerView.setAdapter(mAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+
+        startWorkoutBtn = findViewById(R.id.workout_btn);
+
+        startWorkoutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), StartWorkout.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
