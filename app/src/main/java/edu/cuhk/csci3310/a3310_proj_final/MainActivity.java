@@ -31,15 +31,79 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 public class MainActivity extends AppCompatActivity implements RecyclerViewInterface {
     FirebaseFirestore firestore;
+
     ArrayList<ExerciseModel> exerciseModels = new ArrayList<>();
 
     int[] image = {
+            R.drawable.flat_bench,
+            R.drawable.incline_bench,
+            R.drawable.chest_fly,
+            R.drawable.dips,
+            R.drawable.exercise,
+            R.drawable.bo_rows,
+            R.drawable.lat_pulldown,
+            R.drawable.deadlift,
+            R.drawable.squats,
+            R.drawable.leg_extension,
+            R.drawable.ic_android_black_24dp,
+            R.drawable.flat_bench,
+            R.drawable.incline_bench,
+            R.drawable.chest_fly,
+            R.drawable.dips,
+            R.drawable.exercise,
+            R.drawable.bo_rows,
+            R.drawable.lat_pulldown,
+            R.drawable.deadlift,
+            R.drawable.squats,
+            R.drawable.leg_extension,
+            R.drawable.ic_android_black_24dp,
+            R.drawable.flat_bench,
+            R.drawable.incline_bench,
+            R.drawable.chest_fly,
+            R.drawable.dips,
+            R.drawable.exercise,
+            R.drawable.bo_rows,
+            R.drawable.lat_pulldown,
+            R.drawable.deadlift,
+            R.drawable.squats,
+            R.drawable.leg_extension,
+            R.drawable.ic_android_black_24dp,
+            R.drawable.flat_bench,
+            R.drawable.incline_bench,
+            R.drawable.chest_fly,
+            R.drawable.dips,
+            R.drawable.exercise,
+            R.drawable.bo_rows,
+            R.drawable.lat_pulldown,
+            R.drawable.deadlift,
+            R.drawable.squats,
+            R.drawable.leg_extension,
+            R.drawable.ic_android_black_24dp,
+            R.drawable.flat_bench,
+            R.drawable.incline_bench,
+            R.drawable.chest_fly,
+            R.drawable.dips,
+            R.drawable.exercise,
+            R.drawable.bo_rows,
+            R.drawable.lat_pulldown,
+            R.drawable.deadlift,
+            R.drawable.squats,
+            R.drawable.leg_extension,
+            R.drawable.ic_android_black_24dp,
             R.drawable.flat_bench,
             R.drawable.incline_bench,
             R.drawable.chest_fly,
@@ -88,8 +152,11 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
                 finish();
             }
         });
+
+
         RecyclerView recyclerView = findViewById(R.id.mRecyclerView);
-        setExerciseModels();
+        readJSONFile();
+//        setExerciseModels();
         Exercise_RecycleViewAdapter mAdapter = new Exercise_RecycleViewAdapter
                 (this,
                 exerciseModels,
@@ -117,22 +184,89 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
         });
     }
 
-    private void setExerciseModels() {
-        String[] exerciseNames = getResources().getStringArray(R.array.gym_movement_list);
-        String[] muscleTargeted = getResources().getStringArray(R.array.muscles_targeted);
-        String[] exerciseTypes = getResources().getStringArray(R.array.exercise_type);
-        String[] exerciseDescription = getResources().getStringArray(R.array.movement_description);
-
-        for(int i = 0; i < exerciseNames.length; i++) {
-            exerciseModels.add(new ExerciseModel(
-                    exerciseNames[i],
-                    muscleTargeted[i],
-                    exerciseTypes[i],
-                    image[i],
-                    exerciseDescription[i]
-            ));
+    private void readJSONFile() {
+        InputStream inputStream = getResources().openRawResource(R.raw.exercise_list);
+        Scanner scanner = new Scanner(inputStream);
+        StringBuilder builder = new StringBuilder();
+        while (scanner.hasNextLine()) {
+            builder.append(scanner.nextLine());
         }
+        String jsonString = builder.toString();
+
+// Parse the JSON string into a JSON object
+        try {
+            JSONArray jsonArray = new JSONArray (jsonString);
+//            System.out.println(jsonObject);
+            String[] exerciseNames = new String[jsonArray.length()];
+            String[] exerciseType = new String[jsonArray.length()];
+            String[] exerciseEquipment = new String[jsonArray.length()];
+            String[] exerciseMuscle = new String[jsonArray.length()];
+            String[] exerciseDifficulty = new String[jsonArray.length()];
+            String[] exerciseInstruction = new String[jsonArray.length()];
+            URL[] exerciseGifURLs = new URL[jsonArray.length()];
+
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                String name = jsonObject.getString("name");
+                String type = jsonObject.getString("type");
+                String equipment = jsonObject.getString("equipment");
+                String muscle = jsonObject.getString("muscle");
+                String difficulty = jsonObject.getString("difficulty");
+                String instruction = jsonObject.getString("instructions");
+//                String url = jsonObject.getString("gifUrl");
+
+                exerciseNames[i] = name;
+                exerciseType[i] = type;
+                exerciseEquipment[i] = equipment;
+                exerciseMuscle[i] = muscle;
+                exerciseDifficulty[i] = difficulty;
+                exerciseInstruction[i] = instruction;
+//                try{
+//                    exerciseGifURLs[i] = new URL(url);
+//                }
+//                catch (MalformedURLException e) {
+//                    e.printStackTrace();
+//                }
+
+            }
+            for(int i = 0; i < exerciseNames.length; i++) {
+                exerciseModels.add(new ExerciseModel(
+                        exerciseNames[i],
+                        exerciseMuscle[i],
+                        exerciseType[i],
+                        image[i],
+                        exerciseInstruction[i],
+                        exerciseDifficulty[i],
+                        exerciseEquipment[i]
+//                        exerciseGifURLs[i]
+                ));
+            }
+
+            // Use the JSON object as needed
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+
     }
+    private void setExerciseModels() {
+//        String[] exerciseNames = getResources().getStringArray(R.array.gym_movement_list);
+//        String[] muscleTargeted = getResources().getStringArray(R.array.muscles_targeted);
+//        String[] exerciseTypes = getResources().getStringArray(R.array.exercise_type);
+//        String[] exerciseDescription = getResources().getStringArray(R.array.movement_description);
+//
+//        for(int i = 0; i < exerciseNames.length; i++) {
+//            exerciseModels.add(new ExerciseModel(
+//                    exerciseNames[i],
+//                    muscleTargeted[i],
+//                    exerciseTypes[i],
+//                    image[i],
+//                    exerciseDescription[i],
+//
+//            ));
+        }
+
 
     @Override
     public void onExerciseClick(int position) {
@@ -142,7 +276,9 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
         intent.putExtra("TARGET", exerciseModels.get(position).getMuscleTargeted());
         intent.putExtra("IMAGE", exerciseModels.get(position).getImage());
         intent.putExtra("DESCRIPTION", exerciseModels.get(position).getMovementDescription());
-
+        intent.putExtra("DIFFICULTY", exerciseModels.get(position).getMovementDifficulty());
+        intent.putExtra("EQUIPMENT", exerciseModels.get(position).getEquipmentRequired());
+        intent.putExtra("TYPE", exerciseModels.get(position).getMovementType());
         startActivity(intent);
     }
 
