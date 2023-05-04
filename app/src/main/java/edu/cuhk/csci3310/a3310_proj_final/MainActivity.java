@@ -209,24 +209,25 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
 // Parse the JSON string into a JSON object
         try {
             JSONArray jsonArray = new JSONArray (jsonString);
-//            System.out.println(jsonObject);
+//            System.out.println(jsonArray);
             String[] exerciseNames = new String[jsonArray.length()];
             String[] exerciseType = new String[jsonArray.length()];
             String[] exerciseEquipment = new String[jsonArray.length()];
             String[] exerciseMuscle = new String[jsonArray.length()];
             String[] exerciseDifficulty = new String[jsonArray.length()];
             String[] exerciseInstruction = new String[jsonArray.length()];
-            URL[] exerciseGifURLs = new URL[jsonArray.length()];
+            String[] exerciseGifURLs = new String[jsonArray.length()];
 
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
+//                System.out.println(jsonObject);
                 String name = jsonObject.getString("name");
                 String type = jsonObject.getString("type");
                 String equipment = jsonObject.getString("equipment");
                 String muscle = jsonObject.getString("muscle");
                 String difficulty = jsonObject.getString("difficulty");
                 String instruction = jsonObject.getString("instructions");
-//                String url = jsonObject.getString("gifUrl");
+                String url = jsonObject.getString("gifUrl");
 
                 exerciseNames[i] = name;
                 exerciseType[i] = type;
@@ -234,14 +235,9 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
                 exerciseMuscle[i] = muscle;
                 exerciseDifficulty[i] = difficulty;
                 exerciseInstruction[i] = instruction;
-//                try{
-//                    exerciseGifURLs[i] = new URL(url);
-//                }
-//                catch (MalformedURLException e) {
-//                    e.printStackTrace();
-//                }
-
+                exerciseGifURLs[i] = url;
             }
+
             for(int i = 0; i < exerciseNames.length; i++) {
                 exerciseModels.add(new ExerciseModel(
                         exerciseNames[i],
@@ -250,8 +246,8 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
                         image[i],
                         exerciseInstruction[i],
                         exerciseDifficulty[i],
-                        exerciseEquipment[i]
-//                        exerciseGifURLs[i]
+                        exerciseEquipment[i],
+                        exerciseGifURLs[i]
                 ));
             }
 
@@ -292,6 +288,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
         intent.putExtra("DIFFICULTY", exerciseModels.get(position).getMovementDifficulty());
         intent.putExtra("EQUIPMENT", exerciseModels.get(position).getEquipmentRequired());
         intent.putExtra("TYPE", exerciseModels.get(position).getMovementType());
+        intent.putExtra("URL", exerciseModels.get(position).getMovementURL());
         startActivity(intent);
     }
 

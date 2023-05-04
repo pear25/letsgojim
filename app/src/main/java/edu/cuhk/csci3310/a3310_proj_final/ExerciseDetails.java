@@ -30,14 +30,14 @@ public class ExerciseDetails extends AppCompatActivity {
 //        String gifUrl = uri.toString();
         int image = getIntent().getIntExtra("IMAGE", 0);
 
-        TextView exerciseNameView = findViewById(R.id.textView4);
-        TextView exerciseDetailView = findViewById(R.id.textView5);
-        TextView muscleTargetedView = findViewById(R.id.textView2);
-        TextView movementDifficultyView = findViewById(R.id.textView3);
-        TextView equipmentRequiredView = findViewById(R.id.textView6);
+        TextView exerciseNameView = findViewById(R.id.exerciseHeader);
+        TextView exerciseDetailView = findViewById(R.id.movementInstruction);
+        TextView muscleTargetedView = findViewById(R.id.muscleTargeted);
+        TextView movementDifficultyView = findViewById(R.id.difficulty);
+        TextView equipmentRequiredView = findViewById(R.id.equipment);
         ImageView exerciseImage = (ImageView) findViewById(R.id.imageView2);
-        String url = "https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8&w=1000&q=80";
-        Glide.with(this).load(url).placeholder(image).into(exerciseImage);
+        TextView movementTypeView = findViewById(R.id.movementType);
+        Glide.with(this).load(gifUrl).placeholder(image).into(exerciseImage);
 //        exerciseImage.setImageResource(image);
 
         exerciseNameView.setText(name);
@@ -45,6 +45,7 @@ public class ExerciseDetails extends AppCompatActivity {
         muscleTargetedView.append(muscleTargeted);
         movementDifficultyView.append(movementDifficulty);
         equipmentRequiredView.append(equipmentRequired);
+        movementTypeView.append(movementType);
     }
 
 }

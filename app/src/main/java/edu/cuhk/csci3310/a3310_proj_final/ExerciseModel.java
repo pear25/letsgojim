@@ -14,9 +14,9 @@ public class ExerciseModel {
 
     public ExerciseModel(String exerciseName, String muscleTargeted, String movementType, int image,
                          String movementDescription,
-                        String movementDifficulty,
-                        String equipmentRequired
-//            , String movementURL
+                         String movementDifficulty,
+                         String equipmentRequired,
+                         String movementURL
     ) {
         this.exerciseName = exerciseName;
         this.muscleTargeted = muscleTargeted;
@@ -25,6 +25,7 @@ public class ExerciseModel {
         this.movementDescription = movementDescription;
         this.movementDifficulty = movementDifficulty;
         this.equipmentRequired = equipmentRequired;
+        this.movementURL = movementURL;
     }
 
     public String getExerciseName() {
@@ -51,5 +52,5 @@ public class ExerciseModel {
 
     public  String getMovementDifficulty() { return  movementDifficulty ;}
 
-//    public String getMovementURL() { return movementURL; }
+    public String getMovementURL() { return movementURL; }
 }
