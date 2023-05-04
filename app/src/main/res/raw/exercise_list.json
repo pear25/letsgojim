@@ -63,6 +63,15 @@
     "instructions": "For this exercise you will need access to parallel bars. To get yourself into the starting position, hold your body at arms length (arms locked) above the bars. While breathing in, lower yourself slowly with your torso leaning forward around 30 degrees or so and your elbows flared out slightly until you feel a slight stretch in the chest. Once you feel the stretch, use your chest to bring your body back to the starting position as you breathe out. Tip: Remember to squeeze the chest at the top of the movement for a second. Repeat the movement for the prescribed amount of repetitions.  Variations: If you are new at this exercise and do not have the strength to perform it, use a dip assist machine if available. These machines use weight to help you push your bodyweight. Otherwise, a spotter holding your legs can help. More advanced lifters can add weight to the exercise by using a weight belt that allows the addition of weighted plates."
   },
   {
+    "name": "Barbell Bench Press",
+    "type": "strength",
+    "muscle": "chest",
+    "equipment": "barbell",
+    "difficulty": "intermediate",
+    "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0025.gif",
+    "instructions": "Lie back on a flat bench. Using a medium width grip (a grip that creates a 90-degree angle in the middle of the movement between the forearms and the upper arms), lift the bar from the rack and hold it straight over you with your arms locked. This will be your starting position. From the starting position, breathe in and begin coming down slowly until the bar touches your middle chest. After a brief pause, push the bar back to the starting position as you breathe out. Focus on pushing the bar using your chest muscles. Lock your arms and squeeze your chest in the contracted position at the top of the motion, hold for a second and then start coming down slowly again. Tip: Ideally, lowering the weight should take about twice as long as raising it. Repeat the movement for the prescribed amount of repetitions. When you are done, place the bar back in the rack.  Caution: If you are new at this exercise, it is advised that you use a spotter. If no spotter is available, then be conservative with the amount of weight used. Also, beware of letting the bar drift too far forward. You want the bar to touch your middle chest and nowhere else. Don't bounce the weight off your chest. You should be in full control of the barbell at all times."
+  },
+  {
     "name": "Weighted pull-up",
     "type": "strength",
     "muscle": "lats",
@@ -277,5 +286,203 @@
     "difficulty": "intermediate",
     "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0297.gif",
     "instructions": "Sit down on a flat bench with one dumbbell in front of you between your legs. Your legs should be spread with your knees bent and feet on the floor. Use your right arm to pick the dumbbell up. Place the back of your right upper arm on the top of your inner right thigh. Rotate the palm of your hand until it is facing forward away from your thigh. Tip: Your arm should be extended and the dumbbell should be above the floor. This will be your starting position. While holding the upper arm stationary, curl the weights forward while contracting the biceps as you breathe out. Only the forearms should move. Continue the movement until your biceps are fully contracted and the dumbbells are at shoulder level. Tip: At the top of the movement make sure that the little finger of your arm is higher than your thumb. This guarantees a good contraction. Hold the contracted position for a second as you squeeze the biceps. Slowly begin to bring the dumbbells back to starting position as your breathe in. Caution: Avoid swinging motions at any time. Repeat for the recommended amount of repetitions. Then repeat the movement with the left arm.  Variations: This exercise can be performed standing with the torso bent forward and the arm in front of you. In this case, no leg support is used for the back of your arm so you will need to make extra effort to ensure no movement of the upper arm. This is a more challenging version of the exercise and is not recommended for people with lower back issues."
+  },
+  {
+    "name": "Single-arm palm-in dumbbell shoulder press",
+    "type": "strength",
+    "muscle": "shoulders",
+    "equipment": "dumbbell",
+    "difficulty": "intermediate",
+    "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0361.gif",
+    "instructions": "Start by having a dumbbell in one hand with your arm fully extended to the side using a neutral grip. Use your other arm to hold on to an incline bench to keep your balance. Your feet should be shoulder width apart from each other. Now slowly lift the dumbbell up until you create a 90 degree angle with your arm. Note: Your forearm should be perpendicular to the floor. Continue to maintain a neutral grip throughout the entire exercise. Slowly lift the dumbbell up until your arm is fully extended. This the starting position. While inhaling lower the weight down until your arm is at a 90 degree angle again. Feel the contraction for a second and then lift the weight back up towards the starting position while exhaling. Remember to hold on to the incline bench and keep your feet positioned to keep balance during the exercise. Repeat for the recommended amount of repetitions. Switch arms and repeat the exercise.  Variation: This exercise can be performed with dumbbells in each arm as the dumbbells will help to keep you balanced. This is another great way to add variety to your routines and keep them interesting."
+  },
+  {
+    "name": "Standing palms-in shoulder press",
+    "type": "strength",
+    "muscle": "shoulders",
+    "equipment": "dumbbell",
+    "difficulty": "intermediate",
+    "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0405.gif",
+    "instructions": "Start by having a dumbbell in each hand with your arm fully extended to the side using a neutral grip. Your feet should be shoulder width apart from each other. Now slowly lift the dumbbells up until you create a 90 degree angle with your arms. Note: Your forearms should be perpendicular to the floor. This the starting position. Continue to maintain a neutral grip throughout the entire exercise. Slowly lift the dumbbells up until your arms are fully extended. While inhaling lower the weights down until your arm is at a 90 degree angle again. Repeat for the recommended amount of repetitions.  Variation: This exercise can be performed with a dumbbell in one arm and another holding on to an incline bench. This is another great way to add variety to your routines and keep them interesting."
+  },
+  {
+    "name": "Biceps curl to shoulder press",
+    "type": "strength",
+    "muscle": "biceps",
+    "equipment": "dumbbell",
+    "difficulty": "beginner",
+    "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/3547.gif",
+    "instructions": "Begin in a standing position with a dumbbell in each hand. Your arms should be hanging at your sides with your palms facing forward. Look directly ahead, keeping your chest up, with your feet shoulder-width apart. This will be your starting position. Initiate the movement by flexing the elbows to curl the weight. Do not use momentum or flex through the shoulder, instead use a controlled motion. Execute the pressing movement by extending the arm, flexing and abducting the shoulder to rotate the arm as you press above your head. Pause at the top of the motion before reversing the movement to return to the starting position. Complete the desired number of repetitions before switching to the opposite side."
+  },
+  {
+    "name": "Seated dumbbell shoulder press",
+    "type": "strength",
+    "muscle": "shoulders",
+    "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0405.gif",
+    "equipment": "dumbbell",
+    "difficulty": "intermediate",
+    "instructions": "While holding a dumbbell in each hand, sit on a military press bench or utility bench that has back support. Place the dumbbells upright on top of your thighs. Now raise the dumbbells to shoulder height one at a time using your thighs to help propel them up into position. Make sure to rotate your wrists so that the palms of your hands are facing forward. This is your starting position. Now, exhale and push the dumbbells upward until they touch at the top. Then, after a brief pause at the top contracted position, slowly lower the weights back down to the starting position while inhaling. Repeat for the recommended amount of repetitions.  Variations: You can perform the exercise standing or sitting on a regular flat bench. For people with lower back problems, the version described is the recommended one. You can also perform the exercise as Arnold Schwarzenegger used to do it, which is to start holding the dumbbells with a supinated grip (palms facing you) in front of your shoulders and then, as you start pushing up, you align the dumbbells in the starting position described on step 3 by rotating your wrists and touch the dumbbells at the top. As you come down, then you would go back to the starting position by rotating the wrist throughout the lowering portion until the palms of your hands are facing you. This variation is called the Arnold Press. However, it is not recommended if you have rotator cuff problems."
+  },
+  {
+    "name": "Alternating standing shoulder press",
+    "type": "strength",
+    "muscle": "shoulders",
+    "equipment": "dumbbell",
+    "difficulty": "intermediate",
+    "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/3546.gif",
+    "instructions": "Stand with a dumbbell in each hand. Raise the dumbbells to your shoulders with your palms facing forward and your elbows pointed out. This will be your starting position. Extend one arm to press the dumbbell straight up, keeping your off hand in place. Do not lean or jerk the weight during the movement. After a brief pause, return the weight to the starting position. Repeat for the opposite side, continuing to alternate between arms."
+  },
+  {
+    "name": "Smith machine shoulder press",
+    "type": "strength",
+    "muscle": "shoulders",
+    "equipment": "machine",
+    "difficulty": "intermediate",
+    "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0766.gif",
+    "instructions": "To begin, place a flat bench (or preferably one with back support) underneath a smith machine. Position the barbell at a height so that when seated on the flat bench, the arms must be almost fully extended to reach the barbell. Once you have the correct height, sit slightly in behind the barbell so that there is an imaginary straight line from the tip of your nose to the barbell. Your feet should be stationary. Grab the barbell with the palms facing forward, unlock it and lift it up so that your arms are fully extended. This is the starting position. Slowly begin to lower the barbell until it is level with your chin while inhaling. Then lift the barbell back to the starting position using your shoulders while exhaling. Repeat for the recommended amount of repetitions.  Variation: You can use dumbbells or a barbell to perform this exercise."
+  },
+  {
+    "name": "Elliptical trainer",
+    "type": "cardio",
+    "muscle": "quadriceps",
+    "equipment": "machine",
+    "difficulty": "intermediate",
+    "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/2141.gif",
+    "instructions": "To begin, step onto the elliptical and select the desired option from the menu. Most ellipticals have a manual setting, or you can select a program to run. Typically, you can enter your age and weight to estimate the amount of calories burned during exercise. Elevation can be adjusted to change the intensity of the workout. The handles can be used to monitor your heart rate to help you stay at an appropriate intensity.  Ellipticals offer convenience, cardiovascular benefits, and have far less impact on joints than ground-based cardio such as running. A 150 lb person will burn on average 387 calories in 30 minutes, compared to more than 450-700 calories running. It's recommended that you use the arms on the elliptical to create more movement, if your elliptical has them."
+  },
+  {
+    "name": "Burpee",
+    "type": "cardio",
+    "muscle": "quadriceps",
+    "equipment": "body_only",
+    "difficulty": "intermediate",
+    "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/1160.gif",
+    "instructions": "Begin standing with your legs shoulder-width apart. Place your hands on the floor and kick your legs back so you end up with your stomach and thighs on the floor. Your elbows should be bent. From this position, press up like you're doing a push-up and push your hips up. Jump your feet under your hips and stand. Finish the movement by jumping in the air and bringing your hands over your head. Repeat."
+  },
+  {
+    "name": "Trail Running/Walking",
+    "type": "cardio",
+    "muscle": "quadriceps",
+    "equipment": "body_only",
+    "difficulty": "intermediate",
+    "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/3666.gif",
+    "instructions": "Running or hiking on trails will get the blood pumping and heart beating almost immediately. Make sure you have good shoes. While you use the muscles in your calves and buttocks to pull yourself up a hill, the knees, joints and ankles absorb the bulk of the pounding coming back down. Take smaller steps as you walk downhill, keep your knees bent to reduce the impact and slow down to avoid falling. A 150 lb person can burn over 200 calories for 30 minutes walking uphill, compared to 175 on a flat surface. If running the trail, a 150 lb person can burn well over 500 calories in 30 minutes."
+  },
+  {
+    "name": "Mountain climber",
+    "type": "cardio",
+    "muscle": "abdominals",
+    "equipment": "body_only",
+    "difficulty": "intermediate",
+    "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0630.gif",
+    "instructions": "Begin in a pushup position, with your weight supported by your hands and toes. Flexing the knee and hip, bring one leg until the knee is approximately under the hip. This will be your starting position. Explosively reverse the positions of your legs, extending the bent leg until the leg is straight and supported by the toe, and bringing the other foot up with the hip and knee flexed. Repeat in an alternating fashion for 20-30 seconds."
+  },
+  {
+    "name": "Drop Push",
+    "type": "plyometrics",
+    "muscle": "chest",
+    "equipment": "other",
+    "difficulty": "beginner",
+    "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/1275.gif",
+    "instructions": "Position low boxes or other platforms 2-3 feet apart. Move to a pushup position between them, supporting yourself by placing your hands on the boxes. With good posture, drop from the platforms by pressing up and moving your hands to shoulder width, cushioning your landing by absorbing the impact through the arm."
+  },
+  {
+    "name": "Sledgehammer swing",
+    "type": "plyometrics",
+    "muscle": "abdominals",
+    "equipment": "other",
+    "difficulty": "intermediate",
+    "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/1496.gif",
+    "instructions": "You will need a tire and a sledgehammer for this exercise. Stand in front of the tire about two feet away from it with a staggered stance. Grip the sledgehammer. If you are right handed, your left hand should be at the bottom of the handle, and your right hand should be choking up closer to the head. As you bring the sledge up, your right hand slides toward the head; as you swing down, your right hand will slide down to join your left hand. Slam it down as hard as you can against the tire. Control the bounce of the hammer off of the tire. Repeat on the other side."
+  },
+  {
+    "name": "Box jump",
+    "type": "plyometrics",
+    "muscle": "hamstrings",
+    "equipment": "other",
+    "difficulty": "beginner",
+    "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/1374.gif",
+    "instructions": "Begin with a box of an appropriate height 1-2 feet in front of you. Stand with your feet should width apart. This will be your starting position. Perform a short squat in preparation for jumping, swinging your arms behind you. Rebound out of this position, extending through the hips, knees, and ankles to jump as high as possible. Swing your arms forward and up. Land on the box with the knees bent, absorbing the impact through the legs. You can jump from the box back to the ground, or preferably step down one leg at a time."
+  },
+  {
+    "name": "Scissors Jump",
+    "type": "plyometrics",
+    "muscle": "quadriceps",
+    "equipment": "body_only",
+    "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/3219.gif",
+    "difficulty": "expert",
+    "instructions": "Assume a lunge stance position with one foot forward with the knee bent, and the rear knee nearly touching the ground. Ensure that the front knee is over the midline of the foot. Extending through both legs, jump as high as possible, swinging your arms to gain lift. As you jump as high as you can, switch the position of your legs, moving your front leg to the back and the rear leg to the front. As you land, absorb the impact through the legs by adopting the lunge position, and repeat."
+  },
+  {
+    "name": "Jumping jack",
+    "type": "plyometrics",
+    "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/3224.gif",
+    "muscle": "quadriceps",
+    "equipment": "body_only",
+    "difficulty": "intermediate",
+    "instructions": "Start by standing with your feet together. In one motion, jump your feet out to the side and raise your arms above your head. Immediately reverse the motion by jumping back to the starting position. Repeat for the recommended amount of repetitions."
+  },
+  {
+    "name": "Landmine twist",
+    "type": "strength",
+    "muscle": "abdominals",
+    "equipment": "barbell",
+    "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0562.gif",
+    "difficulty": "intermediate",
+    "instructions": "Position a bar into a landmine or securely anchor it in a corner. Load the bar to an appropriate weight. Raise the bar from the floor, taking it to shoulder height with both hands with your arms extended in front of you. Adopt a wide stance. This will be your starting position. Perform the movement by rotating the trunk and hips as you swing the weight all the way down to one side. Keep your arms extended throughout the exercise. Reverse the motion to swing the weight all the way to the opposite side. Continue alternating the movement until the set is complete."
+  },
+  {
+    "name": "Bottoms Up",
+    "type": "strength",
+    "muscle": "abdominals",
+    "equipment": "body_only",
+    "difficulty": "intermediate",
+    "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0138.gif",
+    "instructions": "Begin by lying on your back on the ground. Your legs should be straight and your arms at your side. This will be your starting position. To perform the movement, tuck the knees toward your chest by flexing the hips and knees. Following this, extend your legs directly above you so that they are perpendicular to the ground. Rotate and elevate your pelvis to raise your glutes from the floor. After a brief pause, return to the starting position."
+  },
+  {
+    "name": "Suspended ab fall-out",
+    "type": "strength",
+    "muscle": "abdominals",
+    "equipment": "other",
+    "difficulty": "intermediate",
+    "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0805.gif",
+    "instructions": "Adjust the straps so the handles are at an appropriate height, below waist level. Begin standing and grasping the handles. Lean into the straps, moving to an incline push-up position. This will be your starting position. Keeping your arms straight, lean further into the suspension straps, bringing your body closer to the ground, allowing your shoulders to extend, raising your arms up and over your head. Maintain a neutral spine and keep the rest of your body straight, your shoulders being the only joints allowed to move. Pause during the peak contraction, and then return to the starting position."
+  },
+  {
+    "name": "Dumbbell spell caster",
+    "type": "strength",
+    "muscle": "abdominals",
+    "equipment": "dumbbell",
+    "difficulty": "beginner",
+    "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0777.gif",
+    "instructions": "Hold a dumbbell in each hand with a pronated grip. Your feet should be wide with your hips and knees extended. This will be your starting position. Begin the movement by pulling both of the dumbbells to one side next to your hip, rotating your torso. Keeping your arms straight and the dumbbells parallel to the ground, rotate your torso to swing the weights to your opposite side. Continue alternating, rotating from one side to the other until the set is complete."
+  },
+  {
+    "name": "Decline reverse crunch",
+    "type": "strength",
+    "muscle": "abdominals",
+    "equipment": "other",
+    "difficulty": "intermediate",
+    "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0277.gif",
+    "instructions": "Lie on your back on a decline bench and hold on to the top of the bench with both hands. Don't let your body slip down from this position. Hold your legs parallel to the floor using your abs to hold them there while keeping your knees and feet together. Tip: Your legs should be fully extended with a slight bend on the knee. This will be your starting position. While exhaling, move your legs towards the torso as you roll your pelvis backwards and you raise your hips off the bench. At the end of this movement your knees will be touching your chest. Hold the contraction for a second and move your legs back to the starting position while inhaling. Repeat for the recommended amount of repetitions.  Variations: You can do the movement on a flat surface and as you get more advanced you can use ankle weights."
+  },
+  {
+    "name": "Spider crawl",
+    "type": "strength",
+    "muscle": "abdominals",
+    "equipment": "body_only",
+    "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0778.gif",
+    "difficulty": "intermediate",
+    "instructions": "Begin in a prone position on the floor. Support your weight on your hands and toes, with your feet together and your body straight. Your arms should be bent to 90 degrees. This will be your starting position. Initiate the movement by raising one foot off of the ground. Externally rotate the leg and bring the knee toward your elbow, as far forward as possible. Return this leg to the starting position and repeat on the opposite side."
+  },
+  {
+    "name": "Cocoons",
+    "type": "strength",
+    "muscle": "abdominals",
+    "equipment": "body_only",
+    "difficulty": "intermediate",
+    "gifUrl": "http://d205bpvrqc9yn1.cloudfront.net/0260.gif",
+    "instructions": "Begin by lying on your back on the ground. Your legs should be straight and your arms extended behind your head. This will be your starting position. To perform the movement, tuck the knees toward your chest, rotating your pelvis to lift your glutes from the floor. As you do so, flex the spine, bringing your arms back over your head to perform a simultaneous crunch motion. After a brief pause, return to the starting position."
   }
 ]
