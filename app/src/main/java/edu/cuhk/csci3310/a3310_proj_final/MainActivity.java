@@ -132,7 +132,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
         mAuth = FirebaseAuth.getInstance();
 
         textView = findViewById(R.id.user_details);
-//        textView = findViewById(R.id.user_details);
+        textView = findViewById(R.id.user_details);
         logoutBtn = findViewById(R.id.logout_btn);
         user = mAuth.getCurrentUser();
 
@@ -141,7 +141,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
             startActivity(intent);
             finish();
         } else{
-//            textView.setText(user.getEmail());
+            textView.setText(user.getEmail());
             System.out.println(user);
         }
 

@@ -11,8 +11,8 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/imageView2"
@@ -42,42 +42,88 @@
                 android:id="@+id/muscleTargeted"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:text="Muscle(s) Targeted: "
-                android:theme="@style/exerciseDescription"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="28dp"
+                android:text="Muscle(s) Targeted"
+                android:theme="@style/ExerciseListSubHeader"
+                android:layout_marginLeft="48dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/exerciseHeader" />
+
+            <ImageView
+                android:id="@+id/targetImage"
+                android:theme="@style/miniImageMargin"
+                android:layout_width="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/muscleTargeted"
+                app:layout_constraintStart_toStartOf="@id/muscleTargeted"
+                app:layout_constraintEnd_toEndOf="@id/muscleTargeted"
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/difficulty"
                 android:layout_width="wrap_content"
-                android:theme="@style/exerciseDescription"
-                app:layout_constraintTop_toBottomOf="@id/muscleTargeted"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
                 android:layout_height="wrap_content"
-                android:text="Difficulty: " />
+                android:text="Difficulty"
+                android:layout_marginRight="88dp"
+                android:theme="@style/ExerciseListSubHeader"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/muscleTargeted" />
+
+            <ImageView
+                android:id="@+id/difficultyImage"
+                android:theme="@style/miniImageMargin"
+                android:layout_width="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/difficulty"
+                app:layout_constraintStart_toStartOf="@id/difficulty"
+                app:layout_constraintEnd_toEndOf="@id/difficulty"
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/equipment"
-                android:theme="@style/exerciseDescription"
-                app:layout_constraintTop_toBottomOf="@id/difficulty"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:text="Equipment(s): " />
+                android:text="Equipment(s)"
+                android:theme="@style/ExerciseListSubHeader"
+                app:layout_constraintEnd_toEndOf="@id/muscleTargeted"
+                app:layout_constraintStart_toStartOf="@id/muscleTargeted"
+                app:layout_constraintTop_toBottomOf="@id/targetImage" />
+
+            <ImageView
+                android:id="@+id/equipmentImage"
+                android:theme="@style/miniImageMargin"
+                android:layout_width="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/equipment"
+                app:layout_constraintStart_toStartOf="@id/equipment"
+                app:layout_constraintEnd_toEndOf="@id/equipment"
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/movementType"
-                android:text="Type: "
-                android:theme="@style/exerciseDescription"
+                android:text="Type"
+                android:theme="@style/ExerciseListSubHeader"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/difficulty"
+                app:layout_constraintEnd_toEndOf="@id/difficulty"
+                app:layout_constraintTop_toBottomOf="@id/difficultyImage" />
+
+            <ImageView
+                android:id="@+id/movementTypeImage"
+                android:theme="@style/miniImageMargin"
+                android:layout_width="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/movementType"
+                app:layout_constraintStart_toStartOf="@id/movementType"
+                app:layout_constraintEnd_toEndOf="@id/movementType"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/instructionHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:theme="@style/ExerciseListHeader"
+                app:layout_constraintTop_toBottomOf="@id/movementTypeImage"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/equipment" />
+                android:text="Instructions" />
 
             <TextView
                 android:id="@+id/movementInstruction"
@@ -86,11 +132,12 @@
                 android:layout_marginTop="20dp"
                 android:paddingLeft="32dp"
                 android:paddingRight="32dp"
+                android:paddingBottom="20dp"
                 android:text="TextView"
                 android:theme="@style/exerciseDescription"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/movementType" />
+                app:layout_constraintTop_toBottomOf="@id/instructionHeader" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
