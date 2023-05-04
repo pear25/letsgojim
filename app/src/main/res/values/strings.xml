@@ -21,6 +21,7 @@
     <string name="floating_button_description">Logout</string>
     <string name="start_workout">Start a Workout</string>
     <string name="workout_option">Choose a workout type</string>
+    <string name="choose_exercise">Choose your preferred exercise.</string>
 
     <string-array name="gym_movement_list">
         <item>Flat Chest Press</item>

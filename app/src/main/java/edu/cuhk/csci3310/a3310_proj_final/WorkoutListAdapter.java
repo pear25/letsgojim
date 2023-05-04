@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -27,12 +28,10 @@ public class WorkoutListAdapter extends RecyclerView.Adapter<WorkoutListAdapter.
     private final LinkedList<String> textList;
     private final LinkedList<String> descriptionList;
 
-
     class WorkoutViewHolder extends RecyclerView.ViewHolder {
 
         ImageView workoutImageView;
         TextView workoutTextView;
-
         final WorkoutListAdapter mAdapter;
 
         public WorkoutViewHolder(View itemView, WorkoutListAdapter adapter) {
@@ -42,25 +41,25 @@ public class WorkoutListAdapter extends RecyclerView.Adapter<WorkoutListAdapter.
             this.mAdapter = adapter;
 
             // Event handling registration, page navigation goes here
-            // Event handling registration, page navigation goes here
-//            flowerImageItemView.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    // Get the position of the item that was clicked.
-//                    int position = getLayoutPosition();
-////                    Toast t = Toast.makeText(v.getContext(), "Position " + position + " is clicked", Toast.LENGTH_SHORT);
-////                    t.show();
-//                    Intent intent = new Intent(v.getContext(), DetailActivity.class);
-//                    intent.putExtra("FILE_NAME", mImagePathList.get(position));
-//                    intent.putExtra("FLOWER_NAME", flowerNameList.get(position));
-//                    intent.putExtra("GENUS", genusList.get(position));
-//                    intent.putExtra("RICHNESS", richnessList.get(position));
-//                    intent.putExtra("POSITION", position);
-//
-//                    Activity act = ( Activity ) context;
-//                    act.startActivityForResult( intent , 1 );
-//                }
-//            });
+            workoutImageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // Get the position of the item that was clicked.
+                    int position = getLayoutPosition();
+                    Toast t = Toast.makeText(v.getContext(), "Position " + position + " is clicked", Toast.LENGTH_SHORT);
+                    t.show();
+
+                    Intent intent = new Intent(v.getContext(), ExercisePicker.class);
+                    intent.putExtra("FILE_NAME", mImagePathList.get(position));
+                    intent.putExtra("TYPE", typeList.get(position));
+                    intent.putExtra("TEXT", textList.get(position));
+                    intent.putExtra("DESCRIPTION", descriptionList.get(position));
+                    intent.putExtra("POSITION", position);
+
+                    Activity act = ( Activity ) context;
+                    act.startActivityForResult( intent , 1 );
+                }
+            });
 
             // End of ViewHolder initialization
         }

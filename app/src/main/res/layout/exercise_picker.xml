@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".StartWorkout">
+    tools:context=".ExercisePicker"
+    >
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/exercise_app_bar"
@@ -34,27 +35,36 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <TextView
+    <ImageView
+        android:id="@+id/wpicker_img"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:gravity="center"
-        android:text="@string/workout_option"
-        android:textSize="18sp"
-        android:textStyle="bold" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerview"
-        android:background="@color/white"
-        android:layout_gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="200dp"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/cardio" />
 
     <TextView
-        android:id="@+id/workout_desc"
+        android:id="@+id/wpicker_txt"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:text="Sample text"
         />
+
+    <TextView
+        android:id="@+id/wpicker_desc"
+        android:layout_marginHorizontal="20dp"
+        android:textSize="15sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="The quick brown fox jumps over the lazy dog."
+        />
+
+
+
+
 
 </LinearLayout>

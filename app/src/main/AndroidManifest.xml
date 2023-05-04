@@ -49,5 +49,10 @@
             android:name=".StartWorkout"
             android:exported="true"
             android:theme="@style/Theme.3310_proj_final.NoActionBar" />
+
+        <activity
+            android:name=".ExercisePicker"
+            android:exported="true"
+            android:theme="@style/Theme.3310_proj_final.NoActionBar" />
     </application>
 </manifest>
