@@ -5,6 +5,8 @@
         <item name="colorPrimary">@color/green_500</item>
         <item name="colorPrimaryVariant">@color/green_700</item>
         <item name="colorOnPrimary">@color/white</item>
+        <item name="android:actionMenuTextColor">?attr/colorOnPrimary</item>
+
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorSecondaryVariant">@color/teal_700</item>
@@ -17,6 +19,8 @@
     <style name="Theme.3310_proj_final.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="android:actionMenuTextColor">@color/white</item>
+
     </style>
 
     <style name="ExerciseListHeader">
@@ -45,7 +49,42 @@
         <item name="android:scaleType">fitCenter</item>
     </style>
 
+    <style name="vertically_center">
+    </style>
+
+    <color name="whiteTextColor">#fff</color>
+    <color name="primaryTextColor">#00a5ff</color>
+
     <style name="Theme.3310_proj_final.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.3310_proj_final.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="parent">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="modifiedEditText" parent="parent">
+        <item name="android:textSize">@dimen/newsMoreTextSize</item>
+        <item name="android:layout_marginLeft">24dp</item>
+        <item name="android:layout_marginRight">24dp</item>
+
+        <item name="android:backgroundTint">@color/white</item>
+    </style>
+
+
+    <style name="centreLocatorCardDesign">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_centerInParent">false</item>
+        <item name="android:layout_marginBottom">25dp</item>
+        <item name="android:layout_marginTop">25dp</item>
+        <item name="android:layout_marginLeft">25dp</item>
+        <item name="android:layout_marginRight">25dp</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="Til" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/text_input_box_stroke</item>
+    </style>
 </resources>
