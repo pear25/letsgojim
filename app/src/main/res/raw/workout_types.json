@@ -2,7 +2,7 @@
   "workout": [
     {
       "type": "cardio",
-      "filename": "cardio.png",
+      "filename": "cardio1.png",
       "text": "Cardio",
       "description": "Increases your heart rate and improves the health of the cardiovascular system."
     },
@@ -26,7 +26,7 @@
     },
     {
       "type": "stretching",
-      "filename": "stretching.png",
+      "filename": "stretching1.png",
       "text": "Stretching",
       "description": "Increase flexibility, range of motion, and muscle control, and can help improve athletic performance, prevent injuries, and reduce muscle soreness."
     },
