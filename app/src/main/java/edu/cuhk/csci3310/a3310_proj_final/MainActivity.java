@@ -45,9 +45,7 @@ import java.util.Scanner;
 
 public class MainActivity extends AppCompatActivity implements RecyclerViewInterface {
     FirebaseFirestore firestore;
-
     ArrayList<ExerciseModel> exerciseModels = new ArrayList<>();
-
     int[] image = {
             R.drawable.flat_bench,
             R.drawable.incline_bench,
@@ -150,20 +148,20 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
         super.onCreate(savedInstanceState);
 //        testFirestore();
         setContentView(R.layout.activity_main);
-
+        setSupportActionBar(findViewById(R.id.toolbar));
         mAuth = FirebaseAuth.getInstance();
 
-        textView = findViewById(R.id.user_details);
-        textView = findViewById(R.id.user_details);
+//        textView = findViewById(R.id.user_details);
+//        textView = findViewById(R.id.user_details);
         logoutBtn = findViewById(R.id.logout_btn);
         user = mAuth.getCurrentUser();
 
         if (user == null){
-            Intent intent = new Intent(getApplicationContext(), Login.class);
-            startActivity(intent);
-            finish();
+//            Intent intent = new Intent(getApplicationContext(), Login.class);
+//            startActivity(intent);
+//            finish();
         } else{
-            textView.setText(user.getEmail());
+//            textView.setText(user.getEmail());
             System.out.println(user);
         }
 
@@ -171,7 +169,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
             @Override
             public void onClick(View view) {
                 FirebaseAuth.getInstance().signOut();
-                Intent intent = new Intent(getApplicationContext(), Login.class);
+                Intent intent = new Intent(MainActivity.this, Login.class);
                 startActivity(intent);
                 finish();
             }
@@ -201,6 +199,30 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        switch (id) {
+            case R.id.createExercise:
+                Intent intent = new Intent(getApplicationContext(), CreateExercise.class);
+                startActivity(intent);
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
     public void testFirestore() {
         firestore = FirebaseFirestore.getInstance();
         Map<String, Object> users = new HashMap<>();
@@ -218,7 +240,6 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
             }
         });
     }
-
     private void readJSONFile() {
         InputStream inputStream = getResources().openRawResource(R.raw.exercise_list);
         Scanner scanner = new Scanner(inputStream);
@@ -228,10 +249,9 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
         }
         String jsonString = builder.toString();
 
-// Parse the JSON string into a JSON object
         try {
             JSONArray jsonArray = new JSONArray (jsonString);
-//            System.out.println(jsonArray);
+
             String[] exerciseNames = new String[jsonArray.length()];
             String[] exerciseType = new String[jsonArray.length()];
             String[] exerciseEquipment = new String[jsonArray.length()];
@@ -242,7 +262,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
 
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
-//                System.out.println(jsonObject);
+
                 String name = jsonObject.getString("name");
                 String type = jsonObject.getString("type");
                 String equipment = jsonObject.getString("equipment");
@@ -277,28 +297,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
-
-
     }
-    private void setExerciseModels() {
-//        String[] exerciseNames = getResources().getStringArray(R.array.gym_movement_list);
-//        String[] muscleTargeted = getResources().getStringArray(R.array.muscles_targeted);
-//        String[] exerciseTypes = getResources().getStringArray(R.array.exercise_type);
-//        String[] exerciseDescription = getResources().getStringArray(R.array.movement_description);
-//
-//        for(int i = 0; i < exerciseNames.length; i++) {
-//            exerciseModels.add(new ExerciseModel(
-//                    exerciseNames[i],
-//                    muscleTargeted[i],
-//                    exerciseTypes[i],
-//                    image[i],
-//                    exerciseDescription[i],
-//
-//            ));
-        }
-
-
     @Override
     public void onExerciseClick(int position) {
         Intent intent = new Intent(MainActivity.this, ExerciseDetails.class);
@@ -313,29 +312,6 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
         intent.putExtra("URL", exerciseModels.get(position).getMovementURL());
         startActivity(intent);
     }
-
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.menu_main, menu);
-//        return true;
-//    }
-
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        // Handle action bar item clicks here. The action bar will
-//        // automatically handle clicks on the Home/Up button, so long
-//        // as you specify a parent activity in AndroidManifest.xml.
-//        int id = item.getItemId();
-//
-//        //noinspection SimplifiableIfStatement
-//        if (id == R.id.action_settings) {
-//            return true;
-//        }
-//
-//        return super.onOptionsItemSelected(item);
-//    }
-
 //    @Override
 //    public boolean onSupportNavigateUp() {
 //        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);

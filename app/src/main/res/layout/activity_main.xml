@@ -12,48 +12,30 @@
         android:layout_height="match_parent">
 
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/exercise_app_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        >
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:popupTheme="@style/Theme.3310_proj_final.PopupOverlay">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/main_activity"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            android:textColor="@color/design_default_color_on_primary"
-            android:id="@+id/toolbar_title" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="NO USER"
-            android:textStyle="bold"
-            android:layout_gravity="center"
-            android:textSize="18sp"
-            android:textColor="@color/design_default_color_on_primary"
-            android:id="@+id/user_details" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/main_activity"
+                android:theme="@style/ExerciseListHeader"
+                android:textColor="@color/white"/>
 
         </androidx.appcompat.widget.Toolbar>
 
-    </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/mRecyclerView"
         android:layout_width="409dp"
-        app:layout_constraintTop_toBottomOf="@id/exercise_app_bar"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_height="wrap_content"
         tools:layout_editor_absoluteX="1dp"
