@@ -18,7 +18,6 @@ public class ExerciseByMuscleAdapter extends RecyclerView.Adapter<ExerciseByMusc
     private JSONArray muscleExercises;
 
     ExerciseByMuscleAdapter(JSONArray muscleGroup) {
-        System.out.println(muscleGroup);
         this.muscleExercises = muscleGroup;
     }
 

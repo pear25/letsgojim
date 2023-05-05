@@ -50,8 +50,6 @@ public class ExercisePickerAdapter extends RecyclerView.Adapter<ExercisePickerAd
         );
 
         JSONArray muscleGroup = muscleGroups.get(i);
-        System.out.println("musclegroup");
-        System.out.println(muscleGroup.length());
 
         layoutManager.setInitialPrefetchItemCount(muscleGroup.length());
 
