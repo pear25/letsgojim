@@ -37,7 +37,6 @@ public class CreateExercise extends AppCompatActivity {
     TextInputEditText exerciseNameInput;
     AutoCompleteTextView exerciseCategoryInput, targetMuscleInput, exerciseDifficultyInput, exerciseEquipmentInput;;
     ArrayAdapter<String> categoryAdapter, muscleAdapter, difficultyAdapter, equipmentAdapter;
-
     String exerciseCategory, targetMuscle, exerciseDifficulty, exerciseEquipment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,49 +44,10 @@ public class CreateExercise extends AppCompatActivity {
         setContentView(R.layout.create_exercise);
         exerciseNameInput = findViewById(R.id.exercise_name);
 
-        exerciseCategoryInput = findViewById(R.id.exercise_category);
-        categoryAdapter = new ArrayAdapter<String>(this, R.layout.select_list_item, getResources().getStringArray(R.array.category_item));
-        exerciseCategoryInput.setAdapter(categoryAdapter);
-
-        exerciseCategoryInput.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int pos, long l) {
-                exerciseCategory = adapterView.getItemAtPosition(pos).toString();
-            }
-        });
-
-        targetMuscleInput = findViewById(R.id.exercise_muscle);
-        muscleAdapter = new ArrayAdapter<String>(this, R.layout.select_list_item, getResources().getStringArray(R.array.muscle_item));
-        targetMuscleInput.setAdapter(muscleAdapter);
-
-        targetMuscleInput.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int pos, long l) {
-                targetMuscle = adapterView.getItemAtPosition(pos).toString();
-            }
-        });
-//
-        exerciseDifficultyInput = findViewById(R.id.exercise_difficulty);
-        difficultyAdapter = new ArrayAdapter<String>(this, R.layout.select_list_item, getResources().getStringArray(R.array.difficulty_item));
-        exerciseDifficultyInput.setAdapter(difficultyAdapter);
-
-        exerciseDifficultyInput.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int pos, long l) {
-                exerciseDifficulty = adapterView.getItemAtPosition(pos).toString();
-            }
-        });
-
-        exerciseEquipmentInput = findViewById(R.id.exercise_equipment);
-        equipmentAdapter = new ArrayAdapter<String>(this, R.layout.select_list_item, getResources().getStringArray(R.array.equipment_item));
-        exerciseEquipmentInput.setAdapter(equipmentAdapter);
-
-        exerciseEquipmentInput.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int pos, long l) {
-                exerciseEquipment = adapterView.getItemAtPosition(pos).toString();
-            }
-        });
+        setSelectAdapter(exerciseCategoryInput, R.id.exercise_category, categoryAdapter, R.array.category_item);
+        setSelectAdapter(targetMuscleInput, R.id.exercise_muscle, muscleAdapter, R.array.muscle_item);
+        setSelectAdapter(exerciseDifficultyInput, R.id.exercise_difficulty, difficultyAdapter, R.array.difficulty_item);
+        setSelectAdapter(exerciseEquipmentInput, R.id.exercise_equipment, equipmentAdapter, R.array.equipment_item);
 
         Button submitExerciseBtn = findViewById(R.id.btnSend);
         submitExerciseBtn.setOnClickListener(new View.OnClickListener() {
@@ -148,6 +108,43 @@ public class CreateExercise extends AppCompatActivity {
         return true;
     }
 
+    protected void setSelectAdapter(AutoCompleteTextView selectView, int id_num, ArrayAdapter<String> mAdapter, int stringArray) {
+        selectView = findViewById(id_num);
+        mAdapter = new ArrayAdapter<String>(this, R.layout.select_list_item, getResources().getStringArray(stringArray));
+        selectView.setAdapter(mAdapter);
 
+        if(id_num == R.id.exercise_category)
+            selectView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int pos, long l) {
+                    exerciseCategory = adapterView.getItemAtPosition(pos).toString();
+                }
+            });
+
+        if(id_num == R.id.exercise_muscle)
+            selectView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int pos, long l) {
+                    targetMuscle = adapterView.getItemAtPosition(pos).toString();
+                }
+            });
+
+        if(id_num == R.id.exercise_difficulty)
+            selectView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int pos, long l) {
+                    exerciseDifficulty = adapterView.getItemAtPosition(pos).toString();
+                }
+            });
+
+        if(id_num == R.id.exercise_equipment)
+            selectView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int pos, long l) {
+                    exerciseEquipment = adapterView.getItemAtPosition(pos).toString();
+                }
+            });
+
+    }
 
 }
