@@ -69,60 +69,67 @@
 
 
             <com.google.android.material.textfield.TextInputLayout
-                style="@style/Til"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:id="@+id/exercise_category_input"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:hint="@string/categorySelect">
 
-                <com.google.android.material.textfield.TextInputEditText
+                <AutoCompleteTextView
+                    android:textSize="@dimen/newsMoreTextSize"
                     android:id="@+id/exercise_category"
-                    style="@style/modifiedEditText"
-                    android:hint="@string/exerciseCategory"
-                    android:inputType="textEmailAddress"
-                    />
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
 
             <com.google.android.material.textfield.TextInputLayout
-                style="@style/Til"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:id="@+id/exercise_muscle_input"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:hint="@string/muscleSelect">
 
-                <com.google.android.material.textfield.TextInputEditText
+                <AutoCompleteTextView
+                    android:textSize="@dimen/newsMoreTextSize"
                     android:id="@+id/exercise_muscle"
-                    style="@style/modifiedEditText"
-                    android:hint="@string/muscleTargeted"
-                    android:singleLine="true" />
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:inputType="none" />
             </com.google.android.material.textfield.TextInputLayout>
 
 
             <com.google.android.material.textfield.TextInputLayout
-                style="@style/Til"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:id="@+id/exercise_difficulty_input"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:hint="@string/difficultySelect">
 
-                <com.google.android.material.textfield.TextInputEditText
+                <AutoCompleteTextView
+                    android:textSize="@dimen/newsMoreTextSize"
                     android:id="@+id/exercise_difficulty"
-                    style="@style/modifiedEditText"
-                    android:singleLine="true"
-                    android:hint="@string/exerciseDifficulty" />
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:inputType="none" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                style="@style/Til"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:id="@+id/exercise_equipment_input"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:hint="@string/equipmentSelect">
 
-                <com.google.android.material.textfield.TextInputEditText
+                <AutoCompleteTextView
+                    android:textSize="@dimen/newsMoreTextSize"
                     android:id="@+id/exercise_equipment"
-                    style="@style/modifiedEditText"
-                    android:singleLine="true"
-                    android:hint="@string/exerciseEquipment" />
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:inputType="none" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
