@@ -4,11 +4,6 @@
     tools:context="edu.cuhk.csci3310.a3310_proj_final.MainActivity"
     >
     <item
-        android:id="@+id/createExercise"
-        android:orderInCategory="100"
-        android:title="@string/create_exercise"
-        app:showAsAction="never" />
-    <item
         android:id="@+id/Logout"
         android:orderInCategory="100"
         app:showAsAction="never"

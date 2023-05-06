@@ -63,14 +63,15 @@
         app:srcCompat="@drawable/workout_icon" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/logout_btn"
-        android:contentDescription="@string/floating_button_description"
+        android:id="@+id/createExercise_btn"
+        android:contentDescription="@string/create_exercise"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|start"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="16dp"
-        android:src="@drawable/common_full_open_on_phone" />
+        android:src="@android:drawable/ic_input_add"
+        />
 
 
 

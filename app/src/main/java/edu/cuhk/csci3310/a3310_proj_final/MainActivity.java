@@ -15,6 +15,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.util.Log;
 import android.view.View;
 
 import androidx.navigation.NavController;
@@ -137,7 +138,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
             R.drawable.ic_android_black_24dp,
             };
 
-    FloatingActionButton logoutBtn, startWorkoutBtn;
+    FloatingActionButton createExerciseBtn, startWorkoutBtn;
     TextView textView;
     FirebaseAuth mAuth;
     FirebaseUser user;
@@ -146,32 +147,34 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        testFirestore();
+        testFirestore();
         setContentView(R.layout.activity_main);
         setSupportActionBar(findViewById(R.id.toolbar));
         mAuth = FirebaseAuth.getInstance();
 
 //        textView = findViewById(R.id.user_details);
 //        textView = findViewById(R.id.user_details);
-        logoutBtn = findViewById(R.id.logout_btn);
+        createExerciseBtn = findViewById(R.id.createExercise_btn);
         user = mAuth.getCurrentUser();
 
         if (user == null){
-//            Intent intent = new Intent(getApplicationContext(), Login.class);
-//            startActivity(intent);
-//            finish();
+            Intent intent = new Intent(getApplicationContext(), Login.class);
+            startActivity(intent);
+            finish();
         } else{
 //            textView.setText(user.getEmail());
             System.out.println(user);
         }
 
-        logoutBtn.setOnClickListener(new View.OnClickListener() {
+        createExerciseBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FirebaseAuth.getInstance().signOut();
-                Intent intent = new Intent(MainActivity.this, Login.class);
+                Intent intent = new Intent(getApplicationContext(), CreateExercise.class);
                 startActivity(intent);
-                finish();
+//                FirebaseAuth.getInstance().signOut();
+//                Intent intent = new Intent(MainActivity.this, Login.class);
+//                startActivity(intent);
+//                finish();
             }
         });
 
@@ -212,11 +215,12 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         switch (id) {
-            case R.id.createExercise:
-                Intent intent = new Intent(getApplicationContext(), CreateExercise.class);
+            case R.id.Logout:
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(MainActivity.this, Login.class);
                 startActivity(intent);
+                finish();
                 break;
         }
 
@@ -224,6 +228,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
     }
 
     public void testFirestore() {
+        Log.d("HEHEHHEHE", "HEHEHEHEHHE000");
         firestore = FirebaseFirestore.getInstance();
         Map<String, Object> users = new HashMap<>();
         users.put("Test", "Firebase");

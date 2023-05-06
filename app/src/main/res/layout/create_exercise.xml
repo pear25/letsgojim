@@ -78,7 +78,8 @@
                     android:id="@+id/exercise_category"
                     style="@style/modifiedEditText"
                     android:hint="@string/exerciseCategory"
-                    android:inputType="textEmailAddress" />
+                    android:inputType="textEmailAddress"
+                    />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -93,7 +94,7 @@
                     android:id="@+id/exercise_muscle"
                     style="@style/modifiedEditText"
                     android:hint="@string/muscleTargeted"
-                    android:inputType="phone" />
+                    android:singleLine="true" />
             </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -106,6 +107,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/exercise_difficulty"
                     style="@style/modifiedEditText"
+                    android:singleLine="true"
                     android:hint="@string/exerciseDifficulty" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -119,6 +121,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/exercise_equipment"
                     style="@style/modifiedEditText"
+                    android:singleLine="true"
                     android:hint="@string/exerciseEquipment" />
             </com.google.android.material.textfield.TextInputLayout>
 
