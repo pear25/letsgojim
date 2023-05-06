@@ -33,9 +33,45 @@
     <string name="exerciseEquipment">Equipment</string>
 
 
-    <string name="message">Message</string>
-    <string name="send">Send</string>
-    <string name="name">Name</string>
-    <string name="mobno">Mobile No.</string>
-    <string name="reg_no">Reg</string>
+    <string name="categorySelect">Select Category</string>
+    <string name="muscleSelect">Select Target Muscle</string>
+    <string name="difficultySelect">Select Difficulty</string>
+    <string name="equipmentSelect">Select Equipment</string>
+
+    <string-array name="category_item">
+        <item>strength</item>
+        <item>cardio</item>
+        <item>powerlifting</item>
+        <item>stretching</item>
+        <item>plyometrics</item>
+        <item>strongman</item>
+    </string-array>
+
+    <string-array name="muscle_item">
+        <item>chest</item>
+        <item>triceps</item>
+        <item>lower_back</item>
+        <item>abdominals</item>
+        <item>biceps</item>
+        <item>lats</item>
+        <item>quadriceps</item>
+        <item>hamstrings</item>
+        <item>calves</item>
+        <item>shoulders</item>
+    </string-array>
+
+    <string-array name="difficulty_item">
+        <item>beginner</item>
+        <item>intermediate</item>
+        <item>advanced</item>
+    </string-array>
+
+    <string-array name="equipment_item">
+        <item>barbell</item>
+        <item>dumbbell</item>
+        <item>cable</item>
+        <item>body_only</item>
+        <item>other</item>
+        <item>e-z_curl_bar</item>
+    </string-array>
 </resources>
