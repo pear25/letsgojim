@@ -73,5 +73,8 @@
         <item>body_only</item>
         <item>other</item>
         <item>e-z_curl_bar</item>
+        <item>None</item>
+        <item>machine</item>
+        <item>medicine_ball</item>
     </string-array>
 </resources>

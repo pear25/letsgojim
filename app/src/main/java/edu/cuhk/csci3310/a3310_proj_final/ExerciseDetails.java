@@ -1,13 +1,20 @@
 package edu.cuhk.csci3310.a3310_proj_final;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 
 public class ExerciseDetails extends AppCompatActivity {
     String name;
@@ -40,7 +47,27 @@ public class ExerciseDetails extends AppCompatActivity {
         ImageView movementTypeImage = (ImageView) findViewById(R.id.movementTypeImage);
 
         TextView movementTypeView = findViewById(R.id.movementType);
-        Glide.with(this).load(gifUrl).placeholder(image).into(exerciseImage);
+        Glide
+            .with(this)
+            .load(gifUrl)
+            .thumbnail(
+                Glide.with(this)
+                .load(R.drawable.loading_gif))
+                .listener(new RequestListener<Drawable>() {
+                    @Override
+                    public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                        Toast.makeText(getApplicationContext(), "GIF Failed to load.", Toast.LENGTH_LONG).show();
+                        return true;
+                    }
+
+                    @Override
+                    public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                        return false;
+                    }
+                })
+            .error(R.drawable.barbell)
+            .fallback(R.drawable.barbell)
+            .into(exerciseImage);
 
         muscleImage.setImageResource(setMuscleImage(muscleTargeted));
         difficultyImage.setImageResource(setDifficultyImage(movementDifficulty));
@@ -61,8 +88,6 @@ public class ExerciseDetails extends AppCompatActivity {
         equipmentRequired = getIntent().getStringExtra("EQUIPMENT");
         movementType = getIntent().getStringExtra("TYPE");
         image = getIntent().getIntExtra("IMAGE", 0);
-
-        Log.d("SEON", gifUrl);
     }
 
     public int setMuscleImage(String muscleTargeted) {
@@ -79,7 +104,6 @@ public class ExerciseDetails extends AppCompatActivity {
 
         return R.drawable.lower_back;
     }
-
     public int setDifficultyImage(String movementDifficulty) {
         if (movementDifficulty.equals("beginner")) return R.drawable.easy;
         if (movementDifficulty.equals("intermediate")) return R.drawable.medium;
@@ -92,23 +116,26 @@ public class ExerciseDetails extends AppCompatActivity {
         if (equipmentRequired.equals("dumbbell")) return R.drawable.dumbbell;
         if (equipmentRequired.equals("barbell")) return R.drawable.barbell;
         if (equipmentRequired.equals("e-z_curl_bar")) return R.drawable.ezbar;
-        if (equipmentRequired.equals("cable")) return R.drawable.cable;
-        if (equipmentRequired.equals("body_only")) return R.drawable.body_only;
-        if (equipmentRequired.equals("other")) return R.drawable.plate;
+        if (equipmentRequired.equals("cable")) return R.drawable.cable_machine;
+        if (equipmentRequired.equals("body_only") || equipmentRequired.equals("None")) return R.drawable.body_only;
+        if (equipmentRequired.equals("other")) return R.drawable.other;
+        if (equipmentRequired.equals("machine")) return R.drawable.machine;
+        if (equipmentRequired.equals("medicine_ball") || equipmentRequired.equals("exercise_ball")) return R.drawable.med_ball;
 
         return R.drawable.body_only;
     }
-
     public int setExerciseType (String movementType) {
         if(movementType.equals("cardio")) return R.drawable.cardio;
         if(movementType.equals("olympic_weightlifting")) return R.drawable.olympic_weightlifting;
         if(movementType.equals("strength")) return R.drawable.strength_icon;
-        if(movementType.equals("strongman")) return R.drawable.olympic_weightlifting;
+        if(movementType.equals("strongman")) return R.drawable.strongman_icon;
         if(movementType.equals("plyometrics")) return R.drawable.plyo_icon;
-        if(movementType.equals("powerlifting")) return R.drawable.powerlifting;
+        if(movementType.equals("powerlifting")) return R.drawable.powerlifting_icon;
         if(movementType.equals("stretching")) return R.drawable.stretching;
 
         return R.drawable.strength_icon;
     }
+
+
 
 }
