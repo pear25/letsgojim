@@ -1,16 +1,23 @@
 package edu.cuhk.csci3310.a3310_proj_final;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -47,113 +54,31 @@ import java.util.Scanner;
 public class MainActivity extends AppCompatActivity implements RecyclerViewInterface {
     FirebaseFirestore firestore;
     ArrayList<ExerciseModel> exerciseModels = new ArrayList<>();
-    int[] image = {
-            R.drawable.flat_bench,
-            R.drawable.incline_bench,
-            R.drawable.chest_fly,
-            R.drawable.dips,
-            R.drawable.exercise,
-            R.drawable.bo_rows,
-            R.drawable.lat_pulldown,
-            R.drawable.deadlift,
-            R.drawable.squats,
-            R.drawable.leg_extension,
-            R.drawable.ic_android_black_24dp,
-            R.drawable.flat_bench,
-            R.drawable.incline_bench,
-            R.drawable.chest_fly,
-            R.drawable.dips,
-            R.drawable.exercise,
-            R.drawable.bo_rows,
-            R.drawable.lat_pulldown,
-            R.drawable.deadlift,
-            R.drawable.squats,
-            R.drawable.leg_extension,
-            R.drawable.ic_android_black_24dp,
-            R.drawable.flat_bench,
-            R.drawable.incline_bench,
-            R.drawable.chest_fly,
-            R.drawable.dips,
-            R.drawable.exercise,
-            R.drawable.bo_rows,
-            R.drawable.lat_pulldown,
-            R.drawable.deadlift,
-            R.drawable.squats,
-            R.drawable.leg_extension,
-            R.drawable.ic_android_black_24dp,
-            R.drawable.flat_bench,
-            R.drawable.incline_bench,
-            R.drawable.chest_fly,
-            R.drawable.dips,
-            R.drawable.exercise,
-            R.drawable.bo_rows,
-            R.drawable.lat_pulldown,
-            R.drawable.deadlift,
-            R.drawable.squats,
-            R.drawable.leg_extension,
-            R.drawable.ic_android_black_24dp,
-            R.drawable.flat_bench,
-            R.drawable.incline_bench,
-            R.drawable.chest_fly,
-            R.drawable.dips,
-            R.drawable.exercise,
-            R.drawable.bo_rows,
-            R.drawable.lat_pulldown,
-            R.drawable.deadlift,
-            R.drawable.squats,
-            R.drawable.leg_extension,
-            R.drawable.ic_android_black_24dp,
-            R.drawable.flat_bench,
-            R.drawable.incline_bench,
-            R.drawable.chest_fly,
-            R.drawable.dips,
-            R.drawable.exercise,
-            R.drawable.bo_rows,
-            R.drawable.lat_pulldown,
-            R.drawable.deadlift,
-            R.drawable.squats,
-            R.drawable.leg_extension,
-            R.drawable.ic_android_black_24dp,
-            R.drawable.flat_bench,
-            R.drawable.incline_bench,
-            R.drawable.chest_fly,
-            R.drawable.dips,
-            R.drawable.exercise,
-            R.drawable.bo_rows,
-            R.drawable.lat_pulldown,
-            R.drawable.deadlift,
-            R.drawable.squats,
-            R.drawable.leg_extension,
-            R.drawable.ic_android_black_24dp,
-            R.drawable.flat_bench,
-            R.drawable.incline_bench,
-            R.drawable.chest_fly,
-            R.drawable.dips,
-            R.drawable.exercise,
-            R.drawable.bo_rows,
-            R.drawable.lat_pulldown,
-            R.drawable.deadlift,
-            R.drawable.squats,
-            R.drawable.leg_extension,
-            R.drawable.ic_android_black_24dp,
-            };
+    int[] image = { R.drawable.flat_bench };
 
     FloatingActionButton createExerciseBtn, startWorkoutBtn;
-    TextView textView;
     FirebaseAuth mAuth;
     FirebaseUser user;
+    String defaultInstruction = "Do the movement.";
+    String defaultGif = "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.printmag.com%2Fdesign-news%2Fsomeone-just-bought-a-gif-for-half-a-million-dollars%2F&psig=AOvVaw0m_DOGI72K7Z5MgUM0VaIK&ust=1683563346815000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCIDe2KvQ4_4CFQAAAAAdAAAAABAE";
+    String exerciseName, exerciseCategory, targetMuscle, exerciseDifficulty, exerciseEquipment;
+
+    private static final int CREATE_EXERCISE_REQUEST_CODE = 100;
+
+    Exercise_RecycleViewAdapter mAdapter = new Exercise_RecycleViewAdapter
+            (this,
+                    exerciseModels,
+                    this);
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        testFirestore();
+//        testFirestore();
         setContentView(R.layout.activity_main);
+        Log.d("GOOWYFY", "Length of model is: " + exerciseModels.toArray().length);
         setSupportActionBar(findViewById(R.id.toolbar));
         mAuth = FirebaseAuth.getInstance();
-
-//        textView = findViewById(R.id.user_details);
-//        textView = findViewById(R.id.user_details);
         createExerciseBtn = findViewById(R.id.createExercise_btn);
         user = mAuth.getCurrentUser();
 
@@ -162,33 +87,19 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
             startActivity(intent);
             finish();
         } else{
-//            textView.setText(user.getEmail());
-            System.out.println(user);
+            RecyclerView recyclerView = findViewById(R.id.mRecyclerView);
+
+            recyclerView.setAdapter(mAdapter);
+            recyclerView.setLayoutManager(new LinearLayoutManager(this));
+            getExtraExercise();
         }
 
         createExerciseBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), CreateExercise.class);
-                startActivity(intent);
-//                FirebaseAuth.getInstance().signOut();
-//                Intent intent = new Intent(MainActivity.this, Login.class);
-//                startActivity(intent);
-//                finish();
             }
         });
-
-
-        RecyclerView recyclerView = findViewById(R.id.mRecyclerView);
-        readJSONFile();
-//        setExerciseModels();
-        Exercise_RecycleViewAdapter mAdapter = new Exercise_RecycleViewAdapter
-                (this,
-                exerciseModels,
-                this);
-        recyclerView.setAdapter(mAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
 
         startWorkoutBtn = findViewById(R.id.workout_btn);
 
@@ -245,6 +156,49 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
             }
         });
     }
+
+    public void getExtraExercise() {
+        firestore = FirebaseFirestore.getInstance();
+        CollectionReference exerciseRef = firestore.collection("exercises");
+        Query exerciseQuery = exerciseRef.whereEqualTo("uid", user.getUid());
+
+        exerciseQuery.get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+//                            String[] exerciseName =
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Map <String, Object> data = document.getData();
+                                exerciseName = data.get("exerciseName").toString();
+                                exerciseCategory = data.get("exerciseCategory").toString();
+                                targetMuscle = data.get("targetMuscle").toString();
+                                exerciseEquipment = data.get("exerciseEquipment").toString();
+                                exerciseDifficulty = data.get("exerciseDifficulty").toString();
+                                exerciseModels.add(new ExerciseModel(
+                                        exerciseName,
+                                        targetMuscle,
+                                        exerciseCategory,
+                                        image[0],
+                                        defaultInstruction,
+                                        exerciseDifficulty,
+                                        exerciseEquipment,
+                                        defaultGif
+                                ));
+                                mAdapter.notifyItemInserted(exerciseModels.toArray().length - 1);
+
+
+                                Log.d("GOOOOFY", "=> " + exerciseName + " " + exerciseCategory);
+
+                            }
+                        } else {
+                            Log.d("OHNOOOOOO", "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+        readJSONFile();
+        Log.d("GOOWYFY", "Length of model is: " + exerciseModels.toArray().length);
+    }
     private void readJSONFile() {
         InputStream inputStream = getResources().openRawResource(R.raw.exercise_list);
         Scanner scanner = new Scanner(inputStream);
@@ -257,14 +211,6 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
         try {
             JSONArray jsonArray = new JSONArray (jsonString);
 
-            String[] exerciseNames = new String[jsonArray.length()];
-            String[] exerciseType = new String[jsonArray.length()];
-            String[] exerciseEquipment = new String[jsonArray.length()];
-            String[] exerciseMuscle = new String[jsonArray.length()];
-            String[] exerciseDifficulty = new String[jsonArray.length()];
-            String[] exerciseInstruction = new String[jsonArray.length()];
-            String[] exerciseGifURLs = new String[jsonArray.length()];
-
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
 
@@ -276,32 +222,21 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
                 String instruction = jsonObject.getString("instructions");
                 String url = jsonObject.getString("gifUrl");
 
-                exerciseNames[i] = name;
-                exerciseType[i] = type;
-                exerciseEquipment[i] = equipment;
-                exerciseMuscle[i] = muscle;
-                exerciseDifficulty[i] = difficulty;
-                exerciseInstruction[i] = instruction;
-                exerciseGifURLs[i] = url;
-            }
-
-            for(int i = 0; i < exerciseNames.length; i++) {
                 exerciseModels.add(new ExerciseModel(
-                        exerciseNames[i],
-                        exerciseMuscle[i],
-                        exerciseType[i],
-                        image[i],
-                        exerciseInstruction[i],
-                        exerciseDifficulty[i],
-                        exerciseEquipment[i],
-                        exerciseGifURLs[i]
+                        name,
+                        muscle,
+                        type,
+                        image[0],
+                        instruction,
+                        difficulty,
+                        equipment,
+                        url
                 ));
             }
-
             // Use the JSON object as needed
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
     }
     @Override
     public void onExerciseClick(int position) {
@@ -317,10 +252,10 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
         intent.putExtra("URL", exerciseModels.get(position).getMovementURL());
         startActivity(intent);
     }
+
 //    @Override
-//    public boolean onSupportNavigateUp() {
-//        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-//        return NavigationUI.navigateUp(navController, appBarConfiguration)
-//                || super.onSupportNavigateUp();
+//    public void onStart() {
+//        super.onStart();
+//        mAdapter.notifyItemInserted(exerciseModels.toArray().length - 1);
 //    }
 }

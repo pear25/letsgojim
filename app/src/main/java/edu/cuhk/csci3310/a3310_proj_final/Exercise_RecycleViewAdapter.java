@@ -20,7 +20,8 @@ public class Exercise_RecycleViewAdapter extends RecyclerView.Adapter<Exercise_R
 
     public Exercise_RecycleViewAdapter(Context context,
                                        ArrayList<ExerciseModel> exerciseModels,
-                                       RecyclerViewInterface recyclerViewInterface) {
+                                       RecyclerViewInterface recyclerViewInterface
+    ) {
         this.context = context;
         this.exerciseModels = exerciseModels;
         this.recyclerViewInterface = recyclerViewInterface;

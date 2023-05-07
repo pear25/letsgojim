@@ -41,7 +41,7 @@ public class ExerciseModel {
     }
 
     public int getImage() {
-        return image;
+        return R.drawable.bench_press_svgrepo_com;
     }
 
     public String getMovementDescription() {
