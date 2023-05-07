@@ -30,7 +30,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CreateExercise extends AppCompatActivity {
-
+    String defaultURL = "https://media1.giphy.com/media/MbCEKeRr757YxL7QYb/giphy.gif";
+    String defaultInstruction = "Instructions are not provided in a custom exercise.";
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
     FirebaseUser currentUser = mAuth.getCurrentUser();
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -70,6 +71,8 @@ public class CreateExercise extends AppCompatActivity {
             newExercise.put("targetMuscle", targetMuscle);
             newExercise.put("exerciseDifficulty", exerciseDifficulty);
             newExercise.put("exerciseEquipment", exerciseEquipment);
+            newExercise.put("exerciseGifURL", defaultURL);
+            newExercise.put("exerciseInstruction", defaultInstruction);
 
             if( checkNotNull(exerciseName) &&
                 checkNotNull(exerciseCategory) &&
@@ -100,6 +103,8 @@ public class CreateExercise extends AppCompatActivity {
                 data.putExtra("targetMuscle", targetMuscle);
                 data.putExtra("exerciseDifficulty", exerciseDifficulty);
                 data.putExtra("exerciseEquipment", exerciseEquipment);
+                data.putExtra("exerciseInstruction", defaultInstruction);
+                data.putExtra("exerciseGifURL", defaultURL);
                 setResult(RESULT_OK, data);
                 finish();
 

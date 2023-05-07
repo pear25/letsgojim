@@ -1,6 +1,7 @@
 package edu.cuhk.csci3310.a3310_proj_final;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -60,6 +61,8 @@ public class ExerciseDetails extends AppCompatActivity {
         equipmentRequired = getIntent().getStringExtra("EQUIPMENT");
         movementType = getIntent().getStringExtra("TYPE");
         image = getIntent().getIntExtra("IMAGE", 0);
+
+        Log.d("SEON", gifUrl);
     }
 
     public int setMuscleImage(String muscleTargeted) {

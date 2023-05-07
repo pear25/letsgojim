@@ -64,9 +64,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
     FloatingActionButton createExerciseBtn, startWorkoutBtn;
     FirebaseAuth mAuth;
     FirebaseUser user;
-    String defaultInstruction = "Do the movement.";
-    String defaultGif = "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.printmag.com%2Fdesign-news%2Fsomeone-just-bought-a-gif-for-half-a-million-dollars%2F&psig=AOvVaw0m_DOGI72K7Z5MgUM0VaIK&ust=1683563346815000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCIDe2KvQ4_4CFQAAAAAdAAAAABAE";
-    String exerciseName, exerciseCategory, targetMuscle, exerciseDifficulty, exerciseEquipment;
+    String exerciseName, exerciseCategory, targetMuscle, exerciseDifficulty, exerciseEquipment, exerciseInstruction, exerciseGif;
 
     private static final int CREATE_EXERCISE_REQUEST_CODE = 100;
 
@@ -96,16 +94,18 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
                             String intentMuscle = data.getStringExtra("targetMuscle");
                             String intentDifficulty = data.getStringExtra("exerciseDifficulty");
                             String intentEquipment = data.getStringExtra("exerciseEquipment");
+                            String intentInstruction = data.getStringExtra("exerciseInstruction");
+                            String intentGifURL = data.getStringExtra("exerciseGifURL");
 
                             exerciseModels.add(new ExerciseModel(
                                     intentName,
                                     intentMuscle,
                                     intentCategory,
                                     image[0],
-                                    defaultInstruction,
+                                    intentInstruction,
                                     intentDifficulty,
                                     intentEquipment,
-                                    defaultGif
+                                    intentGifURL
                             ));
                             mAdapter.notifyItemInserted(exerciseModels.toArray().length - 1);
                         }
@@ -212,15 +212,17 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
                                 targetMuscle = data.get("targetMuscle").toString();
                                 exerciseEquipment = data.get("exerciseEquipment").toString();
                                 exerciseDifficulty = data.get("exerciseDifficulty").toString();
+                                exerciseInstruction = data.get("exerciseInstruction").toString();
+                                exerciseGif = data.get("exerciseGifURL").toString();
                                 exerciseModels.add(new ExerciseModel(
                                         exerciseName,
                                         targetMuscle,
                                         exerciseCategory,
                                         image[0],
-                                        defaultInstruction,
+                                        exerciseInstruction,
                                         exerciseDifficulty,
                                         exerciseEquipment,
-                                        defaultGif
+                                        exerciseGif
                                 ));
                                 mAdapter.notifyItemInserted(exerciseModels.toArray().length - 1);
                             }
