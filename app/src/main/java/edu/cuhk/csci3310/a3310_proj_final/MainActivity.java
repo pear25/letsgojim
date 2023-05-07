@@ -1,5 +1,6 @@
 package edu.cuhk.csci3310.a3310_proj_final;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -19,6 +20,10 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -76,6 +81,37 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
         super.onCreate(savedInstanceState);
 //        testFirestore();
         setContentView(R.layout.activity_main);
+
+        ActivityResultLauncher<Intent> getCustomExercise =
+                registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                new ActivityResultCallback<ActivityResult>() {
+                    @Override
+                    public void onActivityResult(ActivityResult result) {
+                        if (result.getResultCode() == Activity.RESULT_OK) {
+                            // There are no request codes
+                            Intent data = result.getData();
+                            String intentName = data.getStringExtra("exerciseName");
+                            String intentCategory = data.getStringExtra("exerciseCategory");
+                            String intentMuscle = data.getStringExtra("targetMuscle");
+                            String intentDifficulty = data.getStringExtra("exerciseDifficulty");
+                            String intentEquipment = data.getStringExtra("exerciseEquipment");
+
+                            exerciseModels.add(new ExerciseModel(
+                                    intentName,
+                                    intentMuscle,
+                                    intentCategory,
+                                    image[0],
+                                    defaultInstruction,
+                                    intentDifficulty,
+                                    intentEquipment,
+                                    defaultGif
+                            ));
+                            mAdapter.notifyItemInserted(exerciseModels.toArray().length - 1);
+                        }
+                    }
+                }
+                );
         Log.d("GOOWYFY", "Length of model is: " + exerciseModels.toArray().length);
         setSupportActionBar(findViewById(R.id.toolbar));
         mAuth = FirebaseAuth.getInstance();
@@ -88,16 +124,17 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
             finish();
         } else{
             RecyclerView recyclerView = findViewById(R.id.mRecyclerView);
-
             recyclerView.setAdapter(mAdapter);
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
             getExtraExercise();
         }
 
+
         createExerciseBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), CreateExercise.class);
+                getCustomExercise.launch(intent);
             }
         });
 
@@ -107,7 +144,8 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), StartWorkout.class);
-                startActivity(intent);
+
+                getCustomExercise.launch(intent);
             }
         });
 
@@ -167,7 +205,6 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
-//                            String[] exerciseName =
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Map <String, Object> data = document.getData();
                                 exerciseName = data.get("exerciseName").toString();
@@ -186,10 +223,6 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
                                         defaultGif
                                 ));
                                 mAdapter.notifyItemInserted(exerciseModels.toArray().length - 1);
-
-
-                                Log.d("GOOOOFY", "=> " + exerciseName + " " + exerciseCategory);
-
                             }
                         } else {
                             Log.d("OHNOOOOOO", "Error getting documents: ", task.getException());
@@ -197,7 +230,6 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
                     }
                 });
         readJSONFile();
-        Log.d("GOOWYFY", "Length of model is: " + exerciseModels.toArray().length);
     }
     private void readJSONFile() {
         InputStream inputStream = getResources().openRawResource(R.raw.exercise_list);
@@ -253,9 +285,4 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
         startActivity(intent);
     }
 
-//    @Override
-//    public void onStart() {
-//        super.onStart();
-//        mAdapter.notifyItemInserted(exerciseModels.toArray().length - 1);
-//    }
 }
