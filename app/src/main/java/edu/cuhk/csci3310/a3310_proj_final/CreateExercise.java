@@ -1,5 +1,6 @@
 package edu.cuhk.csci3310.a3310_proj_final;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.util.Log;
@@ -69,6 +70,7 @@ public class CreateExercise extends AppCompatActivity {
             newExercise.put("targetMuscle", targetMuscle);
             newExercise.put("exerciseDifficulty", exerciseDifficulty);
             newExercise.put("exerciseEquipment", exerciseEquipment);
+
             if( checkNotNull(exerciseName) &&
                 checkNotNull(exerciseCategory) &&
                 checkNotNull(targetMuscle) &&
@@ -92,14 +94,20 @@ public class CreateExercise extends AppCompatActivity {
 
                             }
                         });
+                Intent data = new Intent();
+                data.putExtra("exerciseName", exerciseName);
+                data.putExtra("exerciseCategory", exerciseCategory);
+                data.putExtra("targetMuscle", targetMuscle);
+                data.putExtra("exerciseDifficulty", exerciseDifficulty);
+                data.putExtra("exerciseEquipment", exerciseEquipment);
+                setResult(RESULT_OK, data);
+                finish();
+
             }
             else{
                 Toast.makeText(getApplicationContext(), "Please fill out all the fields!", Toast.LENGTH_LONG).show();
             }
 
-        }
-        else {
-            // User is not signed in, you can redirect them to a login screen
         }
     }
 
