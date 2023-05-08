@@ -8,6 +8,7 @@
     android:orientation="vertical">
 
     <LinearLayout
+        android:background="@android:color/white"
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -15,7 +16,7 @@
         <TextView
             android:id="@+id/muscle_txt"
             android:textStyle="bold"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Muscle group"
@@ -32,12 +33,13 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="15dp"
             android:text="@string/add_exercises"
-            android:textSize="10dp" />
+            android:textSize="10sp" />
 
     </LinearLayout>
 
 
     <androidx.recyclerview.widget.RecyclerView
+        android:background="@android:color/white"
         android:id="@+id/exercises_muscle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

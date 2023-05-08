@@ -3,7 +3,11 @@ package edu.cuhk.csci3310.a3310_proj_final;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.RoundRectShape;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +18,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.json.JSONArray;
@@ -25,10 +30,11 @@ import java.util.List;
 
 public class ExerciseByMuscleAdapter extends RecyclerView.Adapter<ExerciseByMuscleAdapter.ExerciseByMuscleViewHolder> {
 
-//    private JSONArray muscleExercises;
+    private int selectedColor ;
 
     private List<ExerciseCard> exerciseCards;
     private ExerciseCardListener exerciseCardListener;
+
 
 
 //    ExerciseByMuscleAdapter(JSONArray muscleGroup) {
@@ -40,6 +46,8 @@ public class ExerciseByMuscleAdapter extends RecyclerView.Adapter<ExerciseByMusc
         this.exerciseCards = exerciseCards;
         this.exerciseCardListener = exerciseCardListener;
     }
+
+
 
     @NonNull
     @Override
@@ -89,16 +97,20 @@ public class ExerciseByMuscleAdapter extends RecyclerView.Adapter<ExerciseByMusc
         ConstraintLayout cardLayout;
         TextView exerciseText;
         CardView exerciseView;
-
+        View exerciseCardView;
         TextView exerciseDiff;
+        final String selectBgColor = "#22C55E";
+        final String selectStringColor = "#ffffff";
+        final String defaultBgColor = "#ffffff";
+        final String defaultStringColor = "#777777";
 
         public ExerciseByMuscleViewHolder(View itemView) {
             super(itemView);
             cardLayout = itemView.findViewById(R.id.card_layout);
-//            exerciseImg = itemView.findViewById(R.id.imageView);
             exerciseView = itemView.findViewById(R.id.exercise_card);
             exerciseText = itemView.findViewById(R.id.exercise_txt);
             exerciseDiff = itemView.findViewById(R.id.difficulty_text);
+            exerciseCardView = itemView.findViewById(R.id.exercise_card);
 
 //            exerciseCard.setOnClickListener(new View.OnClickListener() {
 //                @SuppressLint("ResourceAsColor")
@@ -126,24 +138,38 @@ public class ExerciseByMuscleAdapter extends RecyclerView.Adapter<ExerciseByMusc
             exerciseText.setText(exerciseCard.name);
             exerciseDiff.setText("Difficulty : " + uppercaser(exerciseCard.difficulty));
             if(exerciseCard.isSelected){
-                exerciseView.setCardBackgroundColor(R.color.green_500);
+                Log.d("COLOR", "TRUE");
+                exerciseView.setBackgroundColor(R.color.primaryTextColor);
 
             }
             else{
-                exerciseView.setCardBackgroundColor(R.color.white);
+                Log.d("COLOR", "FALSE");
+//                exerciseView.setCardBackgroundColor(R.color.white);
             }
             cardLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    float[] radius = {10, 10, 10, 10, 10, 10, 10, 10};
+                    ShapeDrawable shapeDrawable = new ShapeDrawable(new RoundRectShape(
+                            radius,
+                            null,
+                            null
+                    ));
+                    exerciseCard.isSelected = !exerciseCard.isSelected;
+                    boolean cardAction = getSelectedExercise().size() == 0 ? false : true;
+                    exerciseCardListener.onExerciseCardAction(cardAction);
+
                     if(exerciseCard.isSelected){
-                        exerciseCard.isSelected = false;
-                        if(getSelectedExercise().size() == 0){
-                            exerciseCardListener.onExerciseCardAction(false);
-                        }
+                        int color = Color.parseColor(selectBgColor);
+                        shapeDrawable.getPaint().setColor(color);
+                        exerciseCardView.setBackground(shapeDrawable);
+                        exerciseText.setTextColor(Color.parseColor(selectStringColor));
+                        exerciseDiff.setTextColor(Color.parseColor(selectStringColor));
                     }
-                    else {
-                        exerciseCard.isSelected = true;
-                        exerciseCardListener.onExerciseCardAction(true);
+                    if(!exerciseCard.isSelected) {
+                        exerciseCardView.setBackgroundColor(Color.parseColor(defaultBgColor));
+                        exerciseText.setTextColor(Color.parseColor(defaultStringColor));
+                        exerciseDiff.setTextColor(Color.parseColor(defaultStringColor));
                     }
                 }
             });
