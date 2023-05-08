@@ -130,7 +130,7 @@ public class CreateExercise extends AppCompatActivity {
             selectView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int pos, long l) {
-                    exerciseCategory = adapterView.getItemAtPosition(pos).toString();
+                    exerciseCategory = mapStringToDB(adapterView.getItemAtPosition(pos).toString());
                 }
             });
 
@@ -138,7 +138,7 @@ public class CreateExercise extends AppCompatActivity {
             selectView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int pos, long l) {
-                    targetMuscle = adapterView.getItemAtPosition(pos).toString();
+                    targetMuscle = mapStringToDB(adapterView.getItemAtPosition(pos).toString());
                 }
             });
 
@@ -146,7 +146,7 @@ public class CreateExercise extends AppCompatActivity {
             selectView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int pos, long l) {
-                    exerciseDifficulty = adapterView.getItemAtPosition(pos).toString();
+                    exerciseDifficulty = mapStringToDB(adapterView.getItemAtPosition(pos).toString());
                 }
             });
 
@@ -154,9 +154,27 @@ public class CreateExercise extends AppCompatActivity {
             selectView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int pos, long l) {
-                    exerciseEquipment = adapterView.getItemAtPosition(pos).toString();
+                    exerciseEquipment = mapStringToDB(adapterView.getItemAtPosition(pos).toString());
                 }
             });
+
+    }
+
+    public String mapStringToDB(String capString) {
+        if (capString.equals("None")) return "None";
+        Map<String, String> mapper = new HashMap<>();
+        mapper.put("Olympic Weightlifting", "olympic_weightlifting");
+        mapper.put("EZ Curl Bar", "e-z_curl_bar");
+        mapper.put("No Equipment", "body_only");
+        mapper.put("Medicine Ball", "medicine_ball");
+        mapper.put("Exercise Ball", "exercise_ball");
+        mapper.put("Lower Back", "lower_back");
+
+        if(!mapper.containsKey(capString)) {
+            return capString.substring(0, 1).toLowerCase() + capString.substring(1);
+        }
+
+        return mapper.get(capString);
 
     }
 
