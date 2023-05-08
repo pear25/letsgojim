@@ -1,8 +1,11 @@
 package edu.cuhk.csci3310.a3310_proj_final;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -10,17 +13,23 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Set;
 
-public class ExercisePicker extends AppCompatActivity {
+public class ExercisePicker extends AppCompatActivity implements ExercisePickerAdapter.OnWorkoutListener {
 
+    private Context context;
     private String filename;
     private String type;
     private String text;
@@ -29,6 +38,8 @@ public class ExercisePicker extends AppCompatActivity {
     private List<String> muscleList;
     private List<JSONArray> muscleGroups;
     private Integer position;
+
+    private Set<String> setExercises = new HashSet<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +58,8 @@ public class ExercisePicker extends AppCompatActivity {
         TextView wPickerText = findViewById(R.id.wpicker_txt);
         TextView wPickerDesc = findViewById(R.id.wpicker_desc);
 
+        FloatingActionButton nextBut = findViewById(R.id.proceed_workout);
+
         Uri imageUri = Uri.parse(filename);
         wPickerImg.setImageURI(imageUri);
 
@@ -61,9 +74,27 @@ public class ExercisePicker extends AppCompatActivity {
 
         RecyclerView muscleRecycler = findViewById(R.id.muscle_recycler);
         LinearLayoutManager layoutManager = new LinearLayoutManager(ExercisePicker.this);
-        ExercisePickerAdapter exercisePickerAdapter = new ExercisePickerAdapter(muscleList, muscleGroups);
+        ExercisePickerAdapter exercisePickerAdapter = new ExercisePickerAdapter(muscleList, muscleGroups, this);
         muscleRecycler.setAdapter(exercisePickerAdapter);
         muscleRecycler.setLayoutManager(layoutManager);
+
+        nextBut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), ExerciseTodo.class);
+                String intentStr = "";
+                for(String str: setExercises){
+                    if(intentStr.equals("")) {
+                        intentStr = str;
+                    } else{
+                        intentStr = intentStr + "," + str;
+                    }
+                }
+                intent.putExtra("EXERCISES", intentStr);
+
+                startActivity(intent);
+            }
+        });
 
     }
     private void readJSONFile() throws JSONException {
@@ -111,6 +142,23 @@ public class ExercisePicker extends AppCompatActivity {
                 JSONArray j = muscleGroups.get(index);
                 muscleGroups.set(index, j.put(curObj));
             }
+        }
+    }
+
+    @Override
+    public void onWorkoutListener(Intent intent) {
+        System.out.println("THIS IS MAIN");
+        for(String muscle: muscleList){
+            if(intent.hasExtra(muscle)){
+                System.out.println(intent.getStringExtra(muscle));
+                String extras = intent.getStringExtra(muscle);
+                String[] values = extras.split(",");
+                setExercises.addAll(Arrays.asList(values));
+            }
+        }
+        if(setExercises.size() > 0){
+            FloatingActionButton nextBut = findViewById(R.id.proceed_workout);
+            nextBut.setVisibility(View.VISIBLE);
         }
     }
 }

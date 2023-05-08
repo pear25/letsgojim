@@ -57,5 +57,15 @@
             android:name=".CreateExercise"
             android:exported="true"
             android:theme="@style/Theme.3310_proj_final.NoActionBar" />
+
+        <activity
+            android:name=".ExerciseTodo"
+            android:exported="true"
+            android:theme="@style/Theme.3310_proj_final.NoActionBar" />
+
+        <activity
+            android:name=".ExerciseInstructions"
+            android:exported="true"
+            android:theme="@style/Theme.3310_proj_final.NoActionBar" />
     </application>
 </manifest>

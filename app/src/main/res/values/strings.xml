@@ -32,7 +32,6 @@
     <string name="exerciseDifficulty">Difficulty</string>
     <string name="exerciseEquipment">Equipment</string>
 
-
     <string name="categorySelect">Select Category</string>
     <string name="muscleSelect">Select Target Muscle</string>
     <string name="difficultySelect">Select Difficulty</string>
@@ -74,4 +73,13 @@
         <item>other</item>
         <item>e-z_curl_bar</item>
     </string-array>
+
+    <string name="message">Message</string>
+    <string name="send">Send</string>
+    <string name="name">Name</string>
+    <string name="mobno">Mobile No.</string>
+    <string name="reg_no">Reg</string>
+    <string name="add_exercises">Add selected to workout</string>
+    <string name="workout_tracker">Workout Tracker</string>
+    <string name="complete_workout">Complete Workout</string>
 </resources>
