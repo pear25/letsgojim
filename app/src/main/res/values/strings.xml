@@ -38,43 +38,44 @@
     <string name="equipmentSelect">Select Equipment</string>
 
     <string-array name="category_item">
-        <item>strength</item>
-        <item>cardio</item>
-        <item>powerlifting</item>
-        <item>stretching</item>
-        <item>plyometrics</item>
-        <item>strongman</item>
+        <item>Strength</item>
+        <item>Cardio</item>
+        <item>Powerlifting</item>
+        <item>Stretching</item>
+        <item>Plyometrics</item>
+        <item>Strongman</item>
+        <item>Olympic Weightlifting</item>
     </string-array>
 
     <string-array name="muscle_item">
-        <item>chest</item>
-        <item>triceps</item>
-        <item>lower_back</item>
-        <item>abdominals</item>
-        <item>biceps</item>
-        <item>lats</item>
-        <item>quadriceps</item>
-        <item>hamstrings</item>
-        <item>calves</item>
-        <item>shoulders</item>
+        <item>Chest</item>
+        <item>Triceps</item>
+        <item>Lower Back</item>
+        <item>Abdominals</item>
+        <item>Biceps</item>
+        <item>Lats</item>
+        <item>Quadriceps</item>
+        <item>Hamstrings</item>
+        <item>Calves</item>
+        <item>Shoulders</item>
     </string-array>
 
     <string-array name="difficulty_item">
-        <item>beginner</item>
-        <item>intermediate</item>
-        <item>advanced</item>
+        <item>Beginner</item>
+        <item>Intermediate</item>
+        <item>Expert</item>
     </string-array>
 
     <string-array name="equipment_item">
-        <item>barbell</item>
-        <item>dumbbell</item>
-        <item>cable</item>
-        <item>body_only</item>
-        <item>other</item>
-        <item>e-z_curl_bar</item>
+        <item>Barbell</item>
+        <item>Dumbbell</item>
+        <item>Cable</item>
+        <item>No Equipment</item>
+        <item>Other</item>
+        <item>EZ Curl Bar</item>
         <item>None</item>
-        <item>machine</item>
-        <item>medicine_ball</item>
+        <item>Machine</item>
+        <item>Medicine Ball</item>
     </string-array>
 
     <string name="message">Message</string>
