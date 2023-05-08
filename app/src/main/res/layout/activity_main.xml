@@ -29,6 +29,16 @@
                 android:theme="@style/ExerciseListHeader"
                 android:textColor="@color/white"/>
 
+            <ImageButton
+                android:id="@+id/workout_hist"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_margin="5dp"
+                android:background="@null"
+                android:src="@drawable/workout_history"
+                />
+
         </androidx.appcompat.widget.Toolbar>
 
 

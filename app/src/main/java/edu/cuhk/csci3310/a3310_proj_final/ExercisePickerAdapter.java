@@ -93,21 +93,24 @@ public class ExercisePickerAdapter extends RecyclerView.Adapter<ExercisePickerAd
                 StringBuilder exerciseNames = new StringBuilder();
                 List<ExerciseCard> selectedExerciseList = exerciseByMuscleAdapter.getSelectedExercise();
 
-                for(int i = 0; i < selectedExerciseList.size(); i++){
-                    if(i == 0){
-                        exerciseNames.append(selectedExerciseList.get(i).name);
-                    } else {
-                        exerciseNames.append(",").append(selectedExerciseList.get(i).name);
+                if(selectedExerciseList.size() != 0) {
+
+                    for (int i = 0; i < selectedExerciseList.size(); i++) {
+                        if (i == 0) {
+                            exerciseNames.append(selectedExerciseList.get(i).name);
+                        } else {
+                            exerciseNames.append(",").append(selectedExerciseList.get(i).name);
+                        }
                     }
+
+                    // CHANGE HERE TO SEND INTENT TO MAIN
+                    Intent intent = new Intent();
+                    intent.putExtra(muscleList.get(i), exerciseNames.toString());
+                    onWorkoutListener.onWorkoutListener(intent);
                 }
-                System.out.println(exerciseNames);
-
-                // CHANGE HERE TO SEND INTENT TO MAIN
-                Toast.makeText(view.getContext(), "Sending intent to main", Toast.LENGTH_SHORT).show();
-
-                Intent intent = new Intent();
-                intent.putExtra(muscleList.get(i), exerciseNames.toString());
-                onWorkoutListener.onWorkoutListener(intent);
+                else{
+                    Toast.makeText(view.getContext(), "You have not selected any exercise", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

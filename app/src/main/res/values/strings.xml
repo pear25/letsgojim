@@ -82,4 +82,5 @@
     <string name="add_exercises">Add selected to workout</string>
     <string name="workout_tracker">Workout Tracker</string>
     <string name="complete_workout">Complete Workout</string>
+    <string name="workout_history">Workout History</string>
 </resources>

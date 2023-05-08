@@ -41,6 +41,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -62,6 +63,8 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
     int[] image = { R.drawable.flat_bench };
 
     FloatingActionButton createExerciseBtn, startWorkoutBtn;
+
+    ImageButton workoutHistory;
     FirebaseAuth mAuth;
     FirebaseUser user;
     String defaultInstruction = "Do the movement.";
@@ -117,6 +120,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
         mAuth = FirebaseAuth.getInstance();
         createExerciseBtn = findViewById(R.id.createExercise_btn);
         user = mAuth.getCurrentUser();
+        workoutHistory = findViewById(R.id.workout_hist);
 
         if (user == null){
             Intent intent = new Intent(getApplicationContext(), Login.class);
@@ -129,7 +133,13 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
             getExtraExercise();
         }
 
-
+        workoutHistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), WorkoutHistory.class);
+                getCustomExercise.launch(intent);
+            }
+        });
         createExerciseBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
