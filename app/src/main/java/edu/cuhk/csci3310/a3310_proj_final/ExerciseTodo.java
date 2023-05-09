@@ -97,6 +97,9 @@ public class ExerciseTodo extends AppCompatActivity implements ExerciseTodoAdapt
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         workoutName = String.valueOf(editText.getText());
+                        if(workoutName.length() == 0){
+                            workoutName = "Untitled workout";
+                        }
                         sendWorkout(workoutName);
                     }
                 });

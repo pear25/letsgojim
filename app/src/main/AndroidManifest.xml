@@ -67,5 +67,10 @@
             android:name=".ExerciseInstructions"
             android:exported="true"
             android:theme="@style/Theme.3310_proj_final.NoActionBar" />
+
+        <activity
+            android:name=".WorkoutHistory"
+            android:exported="true"
+            android:theme="@style/Theme.3310_proj_final.NoActionBar" />
     </application>
 </manifest>

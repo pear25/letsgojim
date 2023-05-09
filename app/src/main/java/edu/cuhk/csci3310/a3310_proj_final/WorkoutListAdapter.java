@@ -46,8 +46,8 @@ public class WorkoutListAdapter extends RecyclerView.Adapter<WorkoutListAdapter.
                 public void onClick(View v) {
                     // Get the position of the item that was clicked.
                     int position = getLayoutPosition();
-                    Toast t = Toast.makeText(v.getContext(), "Position " + position + " is clicked", Toast.LENGTH_SHORT);
-                    t.show();
+//                    Toast t = Toast.makeText(v.getContext(), "Position " + position + " is clicked", Toast.LENGTH_SHORT);
+//                    t.show();
 
                     Intent intent = new Intent(v.getContext(), ExercisePicker.class);
                     intent.putExtra("FILE_NAME", mImagePathList.get(position));
