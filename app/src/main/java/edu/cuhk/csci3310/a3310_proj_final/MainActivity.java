@@ -67,7 +67,14 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
     ImageButton workoutHistory;
     FirebaseAuth mAuth;
     FirebaseUser user;
-    String exerciseName, exerciseCategory, targetMuscle, exerciseDifficulty, exerciseEquipment, exerciseInstruction, exerciseGif;
+    String exerciseName,
+            exerciseCategory,
+            targetMuscle,
+            exerciseDifficulty,
+            exerciseEquipment,
+            exerciseInstruction,
+            exerciseGif,
+            docId;
 
     private static final int CREATE_EXERCISE_REQUEST_CODE = 100;
 
@@ -108,7 +115,9 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
                                     intentInstruction,
                                     intentDifficulty,
                                     intentEquipment,
-                                    intentGifURL
+                                    intentGifURL,
+                                    true,
+                                    docId
                             ));
                             mAdapter.notifyItemInserted(exerciseModels.toArray().length - 1);
                         }
@@ -224,6 +233,8 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
                                 exerciseDifficulty = data.get("exerciseDifficulty").toString();
                                 exerciseInstruction = data.get("exerciseInstruction").toString();
                                 exerciseGif = data.get("exerciseGifURL").toString();
+                                docId = document.getId();
+                                Log.d("DOC", document.getId());
                                 exerciseModels.add(new ExerciseModel(
                                         exerciseName,
                                         targetMuscle,
@@ -232,7 +243,9 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
                                         exerciseInstruction,
                                         exerciseDifficulty,
                                         exerciseEquipment,
-                                        exerciseGif
+                                        exerciseGif,
+                                        true,
+                                        docId
                                 ));
                                 mAdapter.notifyItemInserted(exerciseModels.toArray().length - 1);
                             }
@@ -274,7 +287,9 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
                         instruction,
                         difficulty,
                         equipment,
-                        url
+                        url,
+                        false,
+                        ""
                 ));
             }
             // Use the JSON object as needed
