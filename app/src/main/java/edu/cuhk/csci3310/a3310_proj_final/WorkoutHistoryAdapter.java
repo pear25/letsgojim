@@ -1,6 +1,8 @@
 package edu.cuhk.csci3310.a3310_proj_final;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,6 +42,27 @@ public class WorkoutHistoryAdapter extends RecyclerView.Adapter<WorkoutHistoryAd
 
             this.mAdapter = adapter;
 
+            workoutCard.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int position = getLayoutPosition();
+                    Map curMap = workoutList.get(position);
+                    Timestamp timestamp = (Timestamp) curMap.get("timestamp");
+                    String exercises = curMap.get("exercises").toString();
+
+                    Date date;
+                    date = timestamp.toDate();
+                    String formattedDate = new SimpleDateFormat("dd/MM/YYYY HH:mm").format(date);
+
+                    Intent intent = new Intent(view.getContext(), WorkoutDetail.class);
+                    intent.putExtra("NAME", (String) curMap.get("name"));
+                    intent.putExtra("TIMESTAMP", formattedDate);
+                    intent.putExtra("EXERCISES", exercises.substring(1, exercises.length()-1));
+
+                    context.startActivity(intent);
+                }
+            });
+
 
         }
 
@@ -49,6 +72,7 @@ public class WorkoutHistoryAdapter extends RecyclerView.Adapter<WorkoutHistoryAd
     public WorkoutHistoryAdapter(Context context, List<Map> workoutList) {
         mInflater = LayoutInflater.from(context);
         this.workoutList = workoutList;
+        this.context = context;
     }
 
     @NonNull

@@ -88,4 +88,5 @@
     <string name="complete_workout">Complete Workout</string>
     <string name="workout_history">Workout History</string>
     <string name="loading_workout_data">Loading workout data...</string>
+    <string name="workout_detail">Workout Detail</string>
 </resources>
