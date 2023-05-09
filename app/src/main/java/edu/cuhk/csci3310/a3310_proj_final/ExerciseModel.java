@@ -10,13 +10,17 @@ public class ExerciseModel {
     String movementURL;
     String equipmentRequired;
     String movementDifficulty;
+    boolean customExercise;
+    String documentId;
     int image;
 
     public ExerciseModel(String exerciseName, String muscleTargeted, String movementType, int image,
                          String movementDescription,
                          String movementDifficulty,
                          String equipmentRequired,
-                         String movementURL
+                         String movementURL,
+                         boolean customExercise,
+                         String documentId
     ) {
         this.exerciseName = exerciseName;
         this.muscleTargeted = muscleTargeted;
@@ -26,6 +30,8 @@ public class ExerciseModel {
         this.movementDifficulty = movementDifficulty;
         this.equipmentRequired = equipmentRequired;
         this.movementURL = movementURL;
+        this.customExercise = customExercise;
+        this.documentId = documentId;
     }
 
     public String getExerciseName() {
@@ -53,4 +59,10 @@ public class ExerciseModel {
     public  String getMovementDifficulty() { return  movementDifficulty ;}
 
     public String getMovementURL() { return movementURL; }
+
+    public boolean getCustomExercise() { return customExercise; }
+
+    public String getDocumentId() {
+        return documentId;
+    }
 }
