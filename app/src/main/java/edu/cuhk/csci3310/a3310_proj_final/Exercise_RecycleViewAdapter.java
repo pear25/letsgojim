@@ -1,6 +1,8 @@
 package edu.cuhk.csci3310.a3310_proj_final;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,6 +13,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -25,12 +31,14 @@ public class Exercise_RecycleViewAdapter extends RecyclerView.Adapter<Exercise_R
     private final RecyclerViewInterface recyclerViewInterface;
     Context context;
     ArrayList<ExerciseModel> exerciseModels;
-    static int deletePosition = -1;
+    private ActivityResultLauncher<Intent> launcher;
 
     public Exercise_RecycleViewAdapter(Context context,
                                        ArrayList<ExerciseModel> exerciseModels,
-                                       RecyclerViewInterface recyclerViewInterface
+                                       RecyclerViewInterface recyclerViewInterface,
+                                       ActivityResultLauncher<Intent> launcher
     ) {
+        this.launcher = launcher;
         this.context = context;
         this.exerciseModels = exerciseModels;
         this.recyclerViewInterface = recyclerViewInterface;
@@ -47,16 +55,27 @@ public class Exercise_RecycleViewAdapter extends RecyclerView.Adapter<Exercise_R
 
     @Override
     public void onBindViewHolder(@NonNull Exercise_RecycleViewAdapter.MyViewHolder holder, int position) {
+
         holder.tvName.setText(exerciseModels.get(position).getExerciseName());
         holder.imageView.setImageResource(exerciseModels.get(position).getImage());
         holder.docId.setText(exerciseModels.get(position).getDocumentId());
-        if(exerciseModels.get(position).getCustomExercise()) holder.deleteButton.setVisibility(View.VISIBLE);
-        else holder.deleteButton.setVisibility(View.GONE);
-        if(position == deletePosition) {
-            exerciseModels.remove(position);
-            deletePosition = -1;
-            notifyItemRemoved(position);
+        holder.exerciseCategory.setText(exerciseModels.get(position).getMovementType());
+        holder.exersiceMuscle.setText(exerciseModels.get(position).getMuscleTargeted());
+        holder.exerciseDifficulty.setText(exerciseModels.get(position).getMovementDifficulty());
+        holder.exerciseEquipment.setText(exerciseModels.get(position).getEquipmentRequired());
+        if(exerciseModels.get(position).getCustomExercise()) {
+            holder.deleteButton.setVisibility(View.VISIBLE);
+            holder.editButton.setVisibility(View.VISIBLE);
         }
+        else {
+            holder.deleteButton.setVisibility(View.GONE);
+            holder.editButton.setVisibility(View.GONE);
+
+        }
+    }
+
+    public void setLauncher (ActivityResultLauncher<Intent> launcher) {
+        this.launcher = launcher;
     }
 
     @Override
@@ -73,15 +92,39 @@ public class Exercise_RecycleViewAdapter extends RecyclerView.Adapter<Exercise_R
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
         ImageView imageView;
-        TextView tvName, docId;
-        ImageView deleteButton;
+        TextView tvName, docId, exerciseCategory, exersiceMuscle, exerciseDifficulty, exerciseEquipment;
+        ImageView deleteButton, editButton;
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         public MyViewHolder(@NonNull View itemView, RecyclerViewInterface recyclerViewInterface) {
             super(itemView);
             imageView = itemView.findViewById(R.id.imageView);
             tvName = itemView.findViewById(R.id.textView);
+
             docId = itemView.findViewById(R.id.documentId);
+            exerciseCategory = itemView.findViewById(R.id.hidden_exercise_category);
+            exersiceMuscle = itemView.findViewById(R.id.hidden_exercise_muscle);
+            exerciseDifficulty = itemView.findViewById(R.id.hidden_exercise_difficulty);
+            exerciseEquipment = itemView.findViewById(R.id.hidden_exercise_equipment);
+
+            editButton = itemView.findViewById(R.id.edit_exercise);
             deleteButton = itemView.findViewById(R.id.delete_exercise);
+
+            editButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(view.getContext(), EditExercise.class);
+                    int currPos = getAdapterPosition();
+                    intent.putExtra("NAME", tvName.getText().toString());
+                    intent.putExtra("CATEGORY", exerciseCategory.getText().toString());
+                    intent.putExtra("MUSCLE", exersiceMuscle.getText().toString());
+                    intent.putExtra("DIFFICULTY", exerciseDifficulty.getText().toString());
+                    intent.putExtra("EQUIPMENT", exerciseEquipment.getText().toString());
+                    intent.putExtra("DOCID", docId.getText().toString());
+                    intent.putExtra("POSITION", String.valueOf(currPos));
+                    Log.wtf("POS", String.valueOf(currPos));
+                    launcher.launch(intent);
+                }
+            });
             deleteButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

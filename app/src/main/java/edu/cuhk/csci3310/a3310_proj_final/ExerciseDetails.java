@@ -16,6 +16,9 @@ import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class ExerciseDetails extends AppCompatActivity {
     String name;
     String muscleTargeted;
@@ -88,6 +91,26 @@ public class ExerciseDetails extends AppCompatActivity {
         equipmentRequired = getIntent().getStringExtra("EQUIPMENT");
         movementType = getIntent().getStringExtra("TYPE");
         image = getIntent().getIntExtra("IMAGE", 0);
+
+        name = mapStringToDB(getIntent().getStringExtra("NAME"));
+        muscleTargeted = mapStringToDB(getIntent().getStringExtra("TARGET"));
+        movementDescription = mapStringToDB(getIntent().getStringExtra("DESCRIPTION"));
+        gifUrl = mapStringToDB(getIntent().getStringExtra("URL"));
+        movementDifficulty = mapStringToDB(getIntent().getStringExtra("DIFFICULTY"));
+        equipmentRequired = mapStringToDB(getIntent().getStringExtra("EQUIPMENT"));
+        movementType = mapStringToDB(getIntent().getStringExtra("TYPE"));
+
+
+
+        Log.wtf("EXTRA", name);
+        Log.wtf("EXTRA", muscleTargeted);
+        Log.wtf("EXTRA", movementDescription);
+        Log.wtf("EXTRA", gifUrl);
+        Log.wtf("EXTRA", movementDifficulty);
+        Log.wtf("EXTRA", equipmentRequired);
+        Log.wtf("EXTRA", movementType);
+
+
     }
 
     public int setMuscleImage(String muscleTargeted) {
@@ -136,6 +159,22 @@ public class ExerciseDetails extends AppCompatActivity {
         return R.drawable.strength_icon;
     }
 
+    public String mapStringToDB(String capString) {
+        if (capString.equals("None")) return "None";
+        Map<String, String> mapper = new HashMap<>();
+        mapper.put("Olympic Weightlifting", "olympic_weightlifting");
+        mapper.put("EZ Curl Bar", "e-z_curl_bar");
+        mapper.put("No Equipment", "body_only");
+        mapper.put("Medicine Ball", "medicine_ball");
+        mapper.put("Exercise Ball", "exercise_ball");
+        mapper.put("Lower Back", "lower_back");
 
+        if(!mapper.containsKey(capString)) {
+            return capString.substring(0, 1).toLowerCase() + capString.substring(1);
+        }
+
+        return mapper.get(capString);
+
+    }
 
 }

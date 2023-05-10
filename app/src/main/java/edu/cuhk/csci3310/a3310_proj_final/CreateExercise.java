@@ -30,7 +30,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CreateExercise extends AppCompatActivity {
-    String defaultURL = "https://media1.giphy.com/media/MbCEKeRr757YxL7QYb/giphy.gif";
+    String defaultURL = "https://www.gympaws.com/wp-content/uploads/2018/07/Homer-Simpson-Funny-Workout-GIF-GymPaws-Gloves.gif";
     String defaultInstruction = "Instructions are not provided in a custom exercise.";
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
     FirebaseUser currentUser = mAuth.getCurrentUser();
