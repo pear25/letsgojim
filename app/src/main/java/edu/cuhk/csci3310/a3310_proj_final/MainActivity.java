@@ -78,11 +78,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
 
     private static final int CREATE_EXERCISE_REQUEST_CODE = 100;
 
-    Exercise_RecycleViewAdapter mAdapter = new Exercise_RecycleViewAdapter
-            (this,
-                    exerciseModels,
-                    this);
-
+    Exercise_RecycleViewAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -124,6 +120,55 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
                     }
                 }
                 );
+
+        ActivityResultLauncher<Intent> editCustomExercise = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                new ActivityResultCallback<ActivityResult>() {
+                    @Override
+                    public void onActivityResult(ActivityResult result) {
+                        Intent data = result.getData();
+                        if(data != null) {
+                            int position = Integer.valueOf(data.getStringExtra("position"));
+                            String name = data.getStringExtra("name");
+                            String category = data.getStringExtra("category");
+                            String muscle = data.getStringExtra("muscle");
+                            String difficulty = data.getStringExtra("difficulty");
+                            String equipment = data.getStringExtra("equipment");
+
+                            String prevInstruction = exerciseModels.get(position).getMovementDescription();
+                            String prevGif = exerciseModels.get(position).getMovementURL();
+                            String thisDocId = exerciseModels.get(position).getDocumentId();
+
+                            Log.wtf("RESULT_EDIT", data.getStringExtra("name"));
+                            Log.wtf("RESULT_EDIT", data.getStringExtra("category"));
+                            Log.wtf("RESULT_EDIT", data.getStringExtra("muscle"));
+                            Log.wtf("RESULT_EDIT", data.getStringExtra("position"));
+                            Log.wtf("RESULT_EDIT", data.getStringExtra("equipment"));
+
+                            exerciseModels.set(position, new ExerciseModel(
+                                    name,
+                                    muscle,
+                                    category,
+                                    image[0],
+                                    prevInstruction,
+                                    difficulty,
+                                    equipment,
+                                    prevGif,
+                                    true,
+                                    thisDocId
+                            ));
+                            mAdapter.notifyDataSetChanged();
+                        }
+
+                    }
+                });
+
+        mAdapter = new Exercise_RecycleViewAdapter
+                (this,
+                        exerciseModels,
+                        this,
+                        editCustomExercise);
+
         Log.d("GOOWYFY", "Length of model is: " + exerciseModels.toArray().length);
         setSupportActionBar(findViewById(R.id.toolbar));
         mAuth = FirebaseAuth.getInstance();
@@ -146,7 +191,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), WorkoutHistory.class);
-                getCustomExercise.launch(intent);
+                startActivity(intent);
             }
         });
         createExerciseBtn.setOnClickListener(new View.OnClickListener() {
@@ -310,6 +355,17 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
         intent.putExtra("TYPE", exerciseModels.get(position).getMovementType());
         intent.putExtra("URL", exerciseModels.get(position).getMovementURL());
         startActivity(intent);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+//        RecyclerView recyclerView = findViewById(R.id.recyclerview)
+//        recyclerView.setAdapter(mAdapter);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+//        exerciseModels.clear();
+//        getExtraExercise();
+
     }
 
 }

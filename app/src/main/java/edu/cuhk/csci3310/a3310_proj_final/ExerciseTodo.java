@@ -134,7 +134,6 @@ public class ExerciseTodo extends AppCompatActivity implements ExerciseTodoAdapt
             workoutData.put("name", name);
             workoutData.put("uid", uid);
             workoutData.put("timestamp", timestamp);
-
             workoutData.put("exercises", exerciseList);
 
             workoutCollectionRef.add(workoutData)
