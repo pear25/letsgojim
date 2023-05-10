@@ -95,6 +95,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
                         if (result.getResultCode() == Activity.RESULT_OK) {
                             // There are no request codes
                             Intent data = result.getData();
+                            System.out.println(data);
                             String intentName = data.getStringExtra("exerciseName");
                             String intentCategory = data.getStringExtra("exerciseCategory");
                             String intentMuscle = data.getStringExtra("targetMuscle");
@@ -102,6 +103,8 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
                             String intentEquipment = data.getStringExtra("exerciseEquipment");
                             String intentInstruction = data.getStringExtra("exerciseInstruction");
                             String intentGifURL = data.getStringExtra("exerciseGifURL");
+                            String docRefId = data.getStringExtra("docRefId");
+                            Log.wtf("CREATEDOC", docRefId);
 
                             exerciseModels.add(new ExerciseModel(
                                     intentName,
@@ -113,7 +116,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
                                     intentEquipment,
                                     intentGifURL,
                                     true,
-                                    docId
+                                    docRefId
                             ));
                             mAdapter.notifyItemInserted(exerciseModels.toArray().length - 1);
                         }

@@ -120,6 +120,8 @@ public class Exercise_RecycleViewAdapter extends RecyclerView.Adapter<Exercise_R
                     intent.putExtra("DIFFICULTY", exerciseDifficulty.getText().toString());
                     intent.putExtra("EQUIPMENT", exerciseEquipment.getText().toString());
                     intent.putExtra("DOCID", docId.getText().toString());
+                    Log.wtf("HELLO BRO", "HEHHE");
+                    Log.wtf("DOCID IS", docId.getText().toString());
                     intent.putExtra("POSITION", String.valueOf(currPos));
                     Log.wtf("POS", String.valueOf(currPos));
                     launcher.launch(intent);

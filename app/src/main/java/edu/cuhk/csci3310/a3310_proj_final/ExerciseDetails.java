@@ -92,24 +92,12 @@ public class ExerciseDetails extends AppCompatActivity {
         movementType = getIntent().getStringExtra("TYPE");
         image = getIntent().getIntExtra("IMAGE", 0);
 
-        name = mapStringToDB(getIntent().getStringExtra("NAME"));
         muscleTargeted = mapStringToDB(getIntent().getStringExtra("TARGET"));
         movementDescription = mapStringToDB(getIntent().getStringExtra("DESCRIPTION"));
         gifUrl = mapStringToDB(getIntent().getStringExtra("URL"));
         movementDifficulty = mapStringToDB(getIntent().getStringExtra("DIFFICULTY"));
         equipmentRequired = mapStringToDB(getIntent().getStringExtra("EQUIPMENT"));
         movementType = mapStringToDB(getIntent().getStringExtra("TYPE"));
-
-
-
-        Log.wtf("EXTRA", name);
-        Log.wtf("EXTRA", muscleTargeted);
-        Log.wtf("EXTRA", movementDescription);
-        Log.wtf("EXTRA", gifUrl);
-        Log.wtf("EXTRA", movementDifficulty);
-        Log.wtf("EXTRA", equipmentRequired);
-        Log.wtf("EXTRA", movementType);
-
 
     }
 

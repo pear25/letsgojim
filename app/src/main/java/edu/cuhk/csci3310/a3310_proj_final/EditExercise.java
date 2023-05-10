@@ -74,6 +74,7 @@ public class EditExercise extends AppCompatActivity {
                 Log.wtf("EDIT_SEND", difficulty);
                 Log.wtf("EDIT_SEND", equipment);
                 Log.wtf("EDIT_SEND", position);
+                Log.wtf("EDIT_SEND", "ASD");
                 DocumentReference documentReference =
                         db.collection("exercises")
                         .document(docId);

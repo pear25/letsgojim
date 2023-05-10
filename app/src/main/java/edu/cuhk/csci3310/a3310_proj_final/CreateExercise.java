@@ -40,6 +40,8 @@ public class CreateExercise extends AppCompatActivity {
     AutoCompleteTextView exerciseCategoryInput, targetMuscleInput, exerciseDifficultyInput, exerciseEquipmentInput;;
     ArrayAdapter<String> categoryAdapter, muscleAdapter, difficultyAdapter, equipmentAdapter;
     String exerciseCategory, targetMuscle, exerciseDifficulty, exerciseEquipment;
+
+    String docRefId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,6 +88,19 @@ public class CreateExercise extends AppCompatActivity {
                         .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                             @Override
                             public void onSuccess(DocumentReference documentReference) {
+                                docRefId = documentReference.getId();
+                                Log.wtf("IN SUCCESS", docRefId);
+                                Intent data = new Intent();
+                                data.putExtra("exerciseName", exerciseName);
+                                data.putExtra("exerciseCategory", exerciseCategory);
+                                data.putExtra("targetMuscle", targetMuscle);
+                                data.putExtra("exerciseDifficulty", exerciseDifficulty);
+                                data.putExtra("exerciseEquipment", exerciseEquipment);
+                                data.putExtra("exerciseInstruction", defaultInstruction);
+                                data.putExtra("exerciseGifURL", defaultURL);
+                                data.putExtra("docRefId", docRefId);
+                                setResult(RESULT_OK, data);
+                                finish();
                                 Toast.makeText(getApplicationContext(), "New exercise has been successfully added!", Toast.LENGTH_LONG).show();
                             }
                         })
@@ -97,16 +112,9 @@ public class CreateExercise extends AppCompatActivity {
 
                             }
                         });
-                Intent data = new Intent();
-                data.putExtra("exerciseName", exerciseName);
-                data.putExtra("exerciseCategory", exerciseCategory);
-                data.putExtra("targetMuscle", targetMuscle);
-                data.putExtra("exerciseDifficulty", exerciseDifficulty);
-                data.putExtra("exerciseEquipment", exerciseEquipment);
-                data.putExtra("exerciseInstruction", defaultInstruction);
-                data.putExtra("exerciseGifURL", defaultURL);
-                setResult(RESULT_OK, data);
-                finish();
+                Log.wtf("OUT SUCCESS", docRefId);
+
+
 
             }
             else{
